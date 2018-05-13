@@ -331,12 +331,24 @@
                 
               
 
-              <time title="创建时间：2018-05-13 15:22:07 / 修改时间：20:47:11" itemprop="dateCreated datePublished" datetime="2018-05-13T15:22:07+08:00">2018-05-13</time>
+              <time title="创建时间：2018-05-13 15:22:07" itemprop="dateCreated datePublished" datetime="2018-05-13T15:22:07+08:00">2018-05-13</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-14 00:05:40" itemprop="dateModified" datetime="2018-05-14T00:05:40+08:00">2018-05-14</time>
               
             
           </span>
@@ -388,7 +400,28 @@
 </li>
 <li><p>在FirstActivity中修改按钮的点击事件</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.activitytest.ACTION_START"</span>);</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p><em>tips: 在SecondActivity中添加的category属性是一个默认的属性，在调用startActivity方法的时候会自动添加到Intent中</em></p>
+</li>
+<li><p>tips: </p>
+<ul>
+<li><p>在SecondActivity中添加的category属性是一个默认的属性，在调用startActivity方法的时候会自动添加到Intent中</p>
+</li>
+<li><p>每个Intent中只能指定一个<code>action</code>，但可以指定多个<code>category</code>，通过调用Intent中的addCategory()方法添加实现如下:</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.activitytest.ACTION_START"</span>);</span><br><span class="line">        intent.addCategory(<span class="string">"com.example.activitytest.MY_CATEGORY"</span>);</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="更多隐式Intent用法"><a href="#更多隐式Intent用法" class="headerlink" title="更多隐式Intent用法"></a>更多隐式Intent用法</h1><h2 id="使用隐式Intent，我们不仅可以启动自己程序内的活动，还可以启动其他程序的活动"><a href="#使用隐式Intent，我们不仅可以启动自己程序内的活动，还可以启动其他程序的活动" class="headerlink" title="使用隐式Intent，我们不仅可以启动自己程序内的活动，还可以启动其他程序的活动"></a>使用隐式Intent，我们不仅可以启动自己程序内的活动，还可以启动其他程序的活动</h2><ul>
+<li><p><strong>调用系统浏览器打开网页:</strong></p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在FirstActivity中</span></span><br><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span></span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);</span><br><span class="line">        intent.setData(Uri.parse(<span class="string">"https://www.baidu.com"</span>));</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Intent.ACTION_VIEW 是内置的一个动作，其常量值为<code>android.intent.action.VIEW</code></li>
+<li><p>通过<code>Uri.parse()</code>方法，将一个网址字符串解析成一个Uri对象，再调用setData方法将这个对象传递进去</p>
+<p><em>可在<code>&lt;intent-filter&gt;</code>标签中再配置一个<code>&lt;data&gt;</code>标签，用于更精确地指定当前活动能够响应什么类型的数据，具体可配置情况如下</em></p>
+<p>| <code>&lt;data&gt;</code>         | 作用                                           |<br>| ————– | ————————————————— |<br>| android:scheme | 用于指定数据的协议部分，如上例的https部分           |<br>| android:host   | 用于指定数据的主机名部分，如上例的<a href="http://www.baidu.com部分" target="_blank" rel="noopener">www.baidu.com部分</a> |<br>| android:port   | 用于指定数据的端口部分，一般紧随在主机名之后        |</p>
+<p>只有<code>&lt;data&gt;</code>标签中指定的内容和Intent中携带的Data完全一致时，当前活动才能够响应Intent。</p>
+</li>
+</ol>
 </li>
 </ul>
 
