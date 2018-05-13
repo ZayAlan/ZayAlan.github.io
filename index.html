@@ -348,7 +348,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-14 00:21:10" itemprop="dateModified" datetime="2018-05-14T00:21:10+08:00">2018-05-14</time>
+                <time title="修改时间：2018-05-14 00:25:00" itemprop="dateModified" datetime="2018-05-14T00:25:00+08:00">2018-05-14</time>
               
             
           </span>
@@ -411,17 +411,13 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.activitytest.ACTION_START"</span>);</span><br><span class="line">        intent.addCategory(<span class="string">"com.example.activitytest.MY_CATEGORY"</span>);</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="更多隐式Intent用法"><a href="#更多隐式Intent用法" class="headerlink" title="更多隐式Intent用法"></a>更多隐式Intent用法</h1><h2 id="使用隐式Intent，我们不仅可以启动自己程序内的活动，还可以启动其他程序的活动"><a href="#使用隐式Intent，我们不仅可以启动自己程序内的活动，还可以启动其他程序的活动" class="headerlink" title="使用隐式Intent，我们不仅可以启动自己程序内的活动，还可以启动其他程序的活动"></a>使用隐式Intent，我们不仅可以启动自己程序内的活动，还可以启动其他程序的活动</h2><ul>
-<li><p><strong>调用系统浏览器打开网页:</strong></p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在FirstActivity中</span></span><br><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span></span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);</span><br><span class="line">        intent.setData(Uri.parse(<span class="string">"https://www.baidu.com"</span>));</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="更多隐式Intent用法"><a href="#更多隐式Intent用法" class="headerlink" title="更多隐式Intent用法"></a>更多隐式Intent用法</h1><h2 id="使用隐式Intent，我们不仅可以启动自己程序内的活动，还可以启动其他程序的活动"><a href="#使用隐式Intent，我们不仅可以启动自己程序内的活动，还可以启动其他程序的活动" class="headerlink" title="使用隐式Intent，我们不仅可以启动自己程序内的活动，还可以启动其他程序的活动"></a>使用隐式Intent，我们不仅可以启动自己程序内的活动，还可以启动其他程序的活动</h2><p><strong>调用系统浏览器打开网页:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在FirstActivity中</span></span><br><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span></span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);</span><br><span class="line">        intent.setData(Uri.parse(<span class="string">"https://www.baidu.com"</span>));</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <ol>
 <li>Intent.ACTION_VIEW 是内置的一个动作，其常量值为<code>android.intent.action.VIEW</code></li>
-<li><p>通过<code>Uri.parse()</code>方法，将一个网址字符串解析成一个Uri对象，再调用setData方法将这个对象传递进去</p>
-<p><em>可在<code>&lt;intent-filter&gt;</code>标签中再配置一个<code>&lt;data&gt;</code>标签，用于更精确地指定当前活动能够响应什么类型的数据，具体可配置情况如下</em></p>
-</li>
+<li>通过<code>Uri.parse()</code>方法，将一个网址字符串解析成一个Uri对象，再调用setData方法将这个对象传递进去</li>
 </ol>
-</li>
-</ul>
+<p><em>可在<code>&lt;intent-filter&gt;</code>标签中再配置一个<code>&lt;data&gt;</code>标签，用于更精确地指定当前活动能够响应什么类型的数据，具体可配置情况如下</em></p>
 <table>
 <thead>
 <tr>
@@ -444,8 +440,8 @@
 </tr>
 </tbody>
 </table>
-<pre><code>只有`&lt;data&gt;`标签中指定的内容和Intent中携带的Data完全一致时，当前活动才能够响应Intent。
-</code></pre>
+<p>只有<code>&lt;data&gt;</code>标签中指定的内容和Intent中携带的Data完全一致时，当前活动才能够响应Intent。</p>
+
           
         
       
