@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Zay&#39;s Blog">
 <meta property="og:description" content="Intent 是Android程序中各组件之间进行交互的一种方式，不仅可以指明当前组件想要执行的动作，还可以在不同组件之间传递数据。一般可被用于启动活动、启动服务以及发送广播等场景。 下面建立在已有两个Activity（FirstActivity和SecondActivity）的基础上进行。 使用显示Intent启动活动，Intent的“意图”明显，故称之为显示Intent。通过修改FirstAc">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-13T16:05:40.245Z">
+<meta property="og:updated_time" content="2018-05-13T16:18:01.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android学习之路--Intent">
 <meta name="twitter:description" content="Intent 是Android程序中各组件之间进行交互的一种方式，不仅可以指明当前组件想要执行的动作，还可以在不同组件之间传递数据。一般可被用于启动活动、启动服务以及发送广播等场景。 下面建立在已有两个Activity（FirstActivity和SecondActivity）的基础上进行。 使用显示Intent启动活动，Intent的“意图”明显，故称之为显示Intent。通过修改FirstAc">
@@ -345,7 +345,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-14 00:05:40" itemprop="dateModified" datetime="2018-05-14T00:05:40+08:00">2018-05-14</time>
+                <time title="修改时间：2018-05-14 00:18:01" itemprop="dateModified" datetime="2018-05-14T00:18:01+08:00">2018-05-14</time>
               
             
           </span>
@@ -413,12 +413,33 @@
 <li>Intent.ACTION_VIEW 是内置的一个动作，其常量值为<code>android.intent.action.VIEW</code></li>
 <li><p>通过<code>Uri.parse()</code>方法，将一个网址字符串解析成一个Uri对象，再调用setData方法将这个对象传递进去</p>
 <p><em>可在<code>&lt;intent-filter&gt;</code>标签中再配置一个<code>&lt;data&gt;</code>标签，用于更精确地指定当前活动能够响应什么类型的数据，具体可配置情况如下</em></p>
-<p>| <code>&lt;data&gt;</code>         | 作用                                           |<br>| ————– | ————————————————— |<br>| android:scheme | 用于指定数据的协议部分，如上例的https部分           |<br>| android:host   | 用于指定数据的主机名部分，如上例的<a href="http://www.baidu.com部分" target="_blank" rel="noopener">www.baidu.com部分</a> |<br>| android:port   | 用于指定数据的端口部分，一般紧随在主机名之后        |</p>
-<p>只有<code>&lt;data&gt;</code>标签中指定的内容和Intent中携带的Data完全一致时，当前活动才能够响应Intent。</p>
 </li>
 </ol>
 </li>
 </ul>
+<table>
+<thead>
+<tr>
+<th><code>&lt;data&gt;</code></th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android:scheme</td>
+<td>用于指定数据的协议部分，如上例的https部分</td>
+</tr>
+<tr>
+<td>android:host</td>
+<td>用于指定数据的主机名部分，如上例的<a href="http://www.baidu.com部分" target="_blank" rel="noopener">www.baidu.com部分</a></td>
+</tr>
+<tr>
+<td>android:port</td>
+<td>用于指定数据的端口部分，一般紧随在主机名之后</td>
+</tr>
+</tbody>
+</table>
+<p>只有<code>&lt;data&gt;</code>标签中指定的内容和Intent中携带的Data完全一致时，当前活动才能够响应Intent。</p>
 
       
     </div>
