@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="Toast是Android系统提供的一种提醒方式 定义一个弹出Toast的触发点，例如点击按钮弹出一个Toast，则在onCreate()方法中添加如下代码: 12345678Button button1 = (Button) findViewById(R.id.button_1);button1.setOnClickListener(new View.OnClickListener() &amp;#12">
+  <meta name="description" content="日志工具类Log（android.util.Log）:  Log.v()  打印意义最小的日志信息，对应verbose，是日志里面级别最低的一种。 Log.d()  打印调试信息，对应debug，比verbose级别高。 Log.i()  打印比较重要的数据，可以帮助分析用户行为数据，对应info，比debug级别高。 Log.w()  打印警告信息，提示程序在这个地方可能会有潜在的风险，对应wa">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Toast">
-<meta property="og:url" content="http://yoursite.com/2018/05/13/Toast/index.html">
+<meta property="og:title" content="test">
+<meta property="og:url" content="http://yoursite.com/2018/05/13/Android的Log工具/index.html">
 <meta property="og:site_name" content="Zay&#39;s Blog">
-<meta property="og:description" content="Toast是Android系统提供的一种提醒方式 定义一个弹出Toast的触发点，例如点击按钮弹出一个Toast，则在onCreate()方法中添加如下代码: 12345678Button button1 = (Button) findViewById(R.id.button_1);button1.setOnClickListener(new View.OnClickListener() &amp;#12">
+<meta property="og:description" content="日志工具类Log（android.util.Log）:  Log.v()  打印意义最小的日志信息，对应verbose，是日志里面级别最低的一种。 Log.d()  打印调试信息，对应debug，比verbose级别高。 Log.i()  打印比较重要的数据，可以帮助分析用户行为数据，对应info，比debug级别高。 Log.w()  打印警告信息，提示程序在这个地方可能会有潜在的风险，对应wa">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-13T05:45:04.219Z">
+<meta property="og:updated_time" content="2018-05-13T06:02:44.358Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Toast">
-<meta name="twitter:description" content="Toast是Android系统提供的一种提醒方式 定义一个弹出Toast的触发点，例如点击按钮弹出一个Toast，则在onCreate()方法中添加如下代码: 12345678Button button1 = (Button) findViewById(R.id.button_1);button1.setOnClickListener(new View.OnClickListener() &amp;#12">
+<meta name="twitter:title" content="test">
+<meta name="twitter:description" content="日志工具类Log（android.util.Log）:  Log.v()  打印意义最小的日志信息，对应verbose，是日志里面级别最低的一种。 Log.d()  打印调试信息，对应debug，比verbose级别高。 Log.i()  打印比较重要的数据，可以帮助分析用户行为数据，对应info，比debug级别高。 Log.w()  打印警告信息，提示程序在这个地方可能会有潜在的风险，对应wa">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/13/Toast/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/13/Android的Log工具/"/>
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>Toast | Zay's Blog</title>
+  <title>test | Zay's Blog</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/Toast/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/Android的Log工具/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zay Alan">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Toast
+          <h1 class="post-title" itemprop="name headline">test
               
             
           </h1>
@@ -328,7 +328,7 @@
                 
               
 
-              <time title="创建时间：2018-05-13 13:20:45 / 修改时间：13:45:04" itemprop="dateCreated datePublished" datetime="2018-05-13T13:20:45+08:00">2018-05-13</time>
+              <time title="创建时间：2018-05-13 13:56:43 / 修改时间：14:02:44" itemprop="dateCreated datePublished" datetime="2018-05-13T13:56:43+08:00">2018-05-13</time>
             
 
             
@@ -366,9 +366,25 @@
       
 
       
-        <p><strong>Toast是Android系统提供的一种提醒方式</strong></p>
-<p>定义一个弹出Toast的触发点，例如点击按钮弹出一个Toast，则在onCreate()方法中添加如下代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Button button1 = (Button) findViewById(R.id.button_1);</span><br><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"You clicked Button1"</span>, </span><br><span class="line">                      Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+        <p><strong>日志工具类Log</strong>（android.util.Log）:</p>
+<ol>
+<li>Log.v()  打印意义最小的日志信息，对应verbose，是日志里面级别最低的一种。</li>
+<li>Log.d()  打印调试信息，对应debug，比verbose级别高。</li>
+<li>Log.i()  打印比较重要的数据，可以帮助分析用户行为数据，对应info，比debug级别高。</li>
+<li>Log.w()  打印警告信息，提示程序在这个地方可能会有潜在的风险，对应warn，比info级别高。</li>
+<li>Log.e()  用于打印错误信息，对应error，比warn级别高。</li>
+</ol>
+<p><strong>eg:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">	setContentView(R.layout.hello_world_layout);</span><br><span class="line">	Log.d(<span class="string">"HelloWorldActivity"</span>, <span class="string">"onCreate execute"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>tag参数</strong>（“HelloWorldActivity”）：一般传入当前的类名，主要用于对打印信息进行过滤。</p>
+<p><strong>msg参数</strong>（“onCreate execute”）：即想要打印的具体的内容。</p>
+<p><em>tips：</em></p>
+<ol>
+<li>logd，logi，logv，logw，loge等按下tab自动补全</li>
+<li>在onCreate()外输入logt后按下tab，会以当前类名作为值自动生成一个TAG常量</li>
+<li>logcat添加过滤器</li>
+<li>关键字过滤，支持正则表达式</li>
+</ol>
 
       
     </div>
