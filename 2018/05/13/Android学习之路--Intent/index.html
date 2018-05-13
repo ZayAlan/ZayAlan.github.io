@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="Toast是Android系统提供的一种提醒方式 定义一个弹出Toast的触发点，例如点击按钮弹出一个Toast，则在onCreate()方法中添加如下代码: 12345678Button button1 = (Button) findViewById(R.id.button_1);button1.setOnClickListener(new View.OnClickListener() &amp;#12">
+  <meta name="description" content="Intent 是Android程序中各组件之间进行交互的一种方式，不仅可以指明当前组件想要执行的动作，还可以在不同组件之间传递数据。一般可被用于启动活动、启动服务以及发送广播等场景。 下面建立在已有两个Activity（FirstActivity和SecondActivity）的基础上进行。 使用显示Intent启动活动，Intent的“意图”明显，故称之为显示Intent。通过修改FirstAc">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android学习之路--Toast">
-<meta property="og:url" content="http://yoursite.com/2018/05/13/Android学习之路--Toast/index.html">
+<meta property="og:title" content="Android学习之路--Intent">
+<meta property="og:url" content="http://yoursite.com/2018/05/13/Android学习之路--Intent/index.html">
 <meta property="og:site_name" content="Zay&#39;s Blog">
-<meta property="og:description" content="Toast是Android系统提供的一种提醒方式 定义一个弹出Toast的触发点，例如点击按钮弹出一个Toast，则在onCreate()方法中添加如下代码: 12345678Button button1 = (Button) findViewById(R.id.button_1);button1.setOnClickListener(new View.OnClickListener() &amp;#12">
+<meta property="og:description" content="Intent 是Android程序中各组件之间进行交互的一种方式，不仅可以指明当前组件想要执行的动作，还可以在不同组件之间传递数据。一般可被用于启动活动、启动服务以及发送广播等场景。 下面建立在已有两个Activity（FirstActivity和SecondActivity）的基础上进行。 使用显示Intent启动活动，Intent的“意图”明显，故称之为显示Intent。通过修改FirstAc">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-13T06:05:55.593Z">
+<meta property="og:updated_time" content="2018-05-13T12:47:11.220Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android学习之路--Toast">
-<meta name="twitter:description" content="Toast是Android系统提供的一种提醒方式 定义一个弹出Toast的触发点，例如点击按钮弹出一个Toast，则在onCreate()方法中添加如下代码: 12345678Button button1 = (Button) findViewById(R.id.button_1);button1.setOnClickListener(new View.OnClickListener() &amp;#12">
+<meta name="twitter:title" content="Android学习之路--Intent">
+<meta name="twitter:description" content="Intent 是Android程序中各组件之间进行交互的一种方式，不仅可以指明当前组件想要执行的动作，还可以在不同组件之间传递数据。一般可被用于启动活动、启动服务以及发送广播等场景。 下面建立在已有两个Activity（FirstActivity和SecondActivity）的基础上进行。 使用显示Intent启动活动，Intent的“意图”明显，故称之为显示Intent。通过修改FirstAc">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/13/Android学习之路--Toast/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/13/Android学习之路--Intent/"/>
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>Android学习之路--Toast | Zay's Blog</title>
+  <title>Android学习之路--Intent | Zay's Blog</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/Android学习之路--Toast/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/Android学习之路--Intent/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zay Alan">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android学习之路--Toast
+          <h1 class="post-title" itemprop="name headline">Android学习之路--Intent
               
             
           </h1>
@@ -328,7 +328,7 @@
                 
               
 
-              <time title="创建时间：2018-05-13 14:10:34 / 修改时间：14:05:55" itemprop="dateCreated datePublished" datetime="2018-05-13T14:10:34+08:00">2018-05-13</time>
+              <time title="创建时间：2018-05-13 15:22:07 / 修改时间：20:47:11" itemprop="dateCreated datePublished" datetime="2018-05-13T15:22:07+08:00">2018-05-13</time>
             
 
             
@@ -366,9 +366,26 @@
       
 
       
-        <p><strong>Toast是Android系统提供的一种提醒方式</strong></p>
-<p>定义一个弹出Toast的触发点，例如点击按钮弹出一个Toast，则在onCreate()方法中添加如下代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Button button1 = (Button) findViewById(R.id.button_1);</span><br><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"You clicked Button1"</span>, </span><br><span class="line">                      Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+        <p><strong>Intent 是Android程序中各组件之间进行交互的一种方式，不仅可以指明当前组件想要执行的动作，还可以在不同组件之间传递数据。一般可被用于启动活动、启动服务以及发送广播等场景。</strong></p>
+<p>下面建立在已有两个Activity（FirstActivity和SecondActivity）的基础上进行。</p>
+<h1 id="使用显示Intent"><a href="#使用显示Intent" class="headerlink" title="使用显示Intent"></a>使用显示Intent</h1><p>启动活动，Intent的“意图”明显，故称之为<strong>显示Intent</strong>。通过修改FirstActivity中按钮的点击事件:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(FirstActivity.<span class="keyword">this</span>, SecondActivity.class);</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用Intent的构造函数<code>Intent(Context packageContext, Class&lt;?&gt;cls)</code>重载，第一个参数Context要求提供一个启动活动的上下文，第二个参数Class则是指定想要启动的目标活动。<strong>这个构造函数构建出了Intent的“意图”</strong></li>
+<li>Activity类中提供了一个<code>startActivity()</code>方法，它接收一个Intent参数用于启动活动。</li>
+</ul>
+<p>运行程序，点击button1，就可以启动SecondActivity这个活动了。</p>
+<h1 id="使用隐式Intent"><a href="#使用隐式Intent" class="headerlink" title="使用隐式Intent"></a>使用隐式Intent</h1><p>并不明确指出想要启动哪一个活动，而是通过指定一系列抽象的<code>action</code>和<code>category</code>等信息，然后交由系统去分析这个Intent，找出合适的活动去启动。这种方式称之为<strong>隐式Intent</strong></p>
+<ul>
+<li><p>首先在<code>AndroidManifest.xml</code>中配置SecondActivity的<code>&lt;activity&gt;</code>标签下的<code>&lt;intent-filter&gt;</code>内容，指定SecondActivity能够响应的<code>action</code>和<code>category</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".SecondActivity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.example.activitytest.ACTION_START"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>只有<code>action</code>和<code>category</code>中的内容同时能够匹配上Intent中指定的两项时，这个活动才能响应该Intent</strong></p>
+</li>
+<li><p>在FirstActivity中修改按钮的点击事件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.activitytest.ACTION_START"</span>);</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><em>tips: 在SecondActivity中添加的category属性是一个默认的属性，在调用startActivity方法的时候会自动添加到Intent中</em></p>
+</li>
+</ul>
 
       
     </div>
@@ -402,8 +419,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/13/Android学习之路--Log工具/" rel="next" title="Android学习之路--Log工具">
-                <i class="fa fa-chevron-left"></i> Android学习之路--Log工具
+              <a href="/2018/05/13/Android学习之路--Menu&销毁活动/" rel="next" title="Android学习之路--Menu&销毁活动">
+                <i class="fa fa-chevron-left"></i> Android学习之路--Menu&销毁活动
               </a>
             
           </div>
@@ -411,10 +428,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/13/Android学习之路--Menu&销毁活动/" rel="prev" title="Android学习之路--Menu&销毁活动">
-                Android学习之路--Menu&销毁活动 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -463,8 +476,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -526,6 +548,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用显示Intent"><span class="nav-number">1.</span> <span class="nav-text">使用显示Intent</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用隐式Intent"><span class="nav-number">2.</span> <span class="nav-text">使用隐式Intent</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
