@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="Menu建立menu文件 在res目录下建menu文件夹，再在menu文件夹下建立一个Menu resource file，假设命名为main 添加菜单项 通过&amp;lt;item&amp;gt;标签添加项目，增加id和title属性等。 创建菜单 在Activity中创建菜单，重写onCreateOptionsMenu()方法(快捷键ctrl+O) 12345@Overridepublic boolean">
+  <meta name="description" content="Toast是Android系统提供的一种提醒方式 定义一个弹出Toast的触发点，例如点击按钮弹出一个Toast，则在onCreate()方法中添加如下代码: 12345678Button button1 = (Button) findViewById(R.id.button_1);button1.setOnClickListener(new View.OnClickListener() &amp;#12">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android学习之路--Menu&amp;销毁活动">
-<meta property="og:url" content="http://yoursite.com/2018/05/13/Android学习之路--Menu&销毁活动/index.html">
+<meta property="og:title" content="Android学习之路--Toast">
+<meta property="og:url" content="http://yoursite.com/2018/05/13/Android学习之路-Toast/index.html">
 <meta property="og:site_name" content="Zay&#39;s Blog">
-<meta property="og:description" content="Menu建立menu文件 在res目录下建menu文件夹，再在menu文件夹下建立一个Menu resource file，假设命名为main 添加菜单项 通过&amp;lt;item&amp;gt;标签添加项目，增加id和title属性等。 创建菜单 在Activity中创建菜单，重写onCreateOptionsMenu()方法(快捷键ctrl+O) 12345@Overridepublic boolean">
+<meta property="og:description" content="Toast是Android系统提供的一种提醒方式 定义一个弹出Toast的触发点，例如点击按钮弹出一个Toast，则在onCreate()方法中添加如下代码: 12345678Button button1 = (Button) findViewById(R.id.button_1);button1.setOnClickListener(new View.OnClickListener() &amp;#12">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-13T07:17:57.379Z">
+<meta property="og:updated_time" content="2018-05-13T06:05:55.593Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android学习之路--Menu&amp;销毁活动">
-<meta name="twitter:description" content="Menu建立menu文件 在res目录下建menu文件夹，再在menu文件夹下建立一个Menu resource file，假设命名为main 添加菜单项 通过&amp;lt;item&amp;gt;标签添加项目，增加id和title属性等。 创建菜单 在Activity中创建菜单，重写onCreateOptionsMenu()方法(快捷键ctrl+O) 12345@Overridepublic boolean">
+<meta name="twitter:title" content="Android学习之路--Toast">
+<meta name="twitter:description" content="Toast是Android系统提供的一种提醒方式 定义一个弹出Toast的触发点，例如点击按钮弹出一个Toast，则在onCreate()方法中添加如下代码: 12345678Button button1 = (Button) findViewById(R.id.button_1);button1.setOnClickListener(new View.OnClickListener() &amp;#12">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/13/Android学习之路--Menu&销毁活动/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/13/Android学习之路-Toast/"/>
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>Android学习之路--Menu&销毁活动 | Zay's Blog</title>
+  <title>Android学习之路--Toast | Zay's Blog</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/Android学习之路--Menu&销毁活动/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/Android学习之路-Toast/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zay Alan">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android学习之路--Menu&销毁活动
+          <h1 class="post-title" itemprop="name headline">Android学习之路--Toast
               
             
           </h1>
@@ -328,7 +328,7 @@
                 
               
 
-              <time title="创建时间：2018-05-13 14:47:49 / 修改时间：15:17:57" itemprop="dateCreated datePublished" datetime="2018-05-13T14:47:49+08:00">2018-05-13</time>
+              <time title="创建时间：2018-05-13 14:10:34 / 修改时间：14:05:55" itemprop="dateCreated datePublished" datetime="2018-05-13T14:10:34+08:00">2018-05-13</time>
             
 
             
@@ -366,31 +366,9 @@
       
 
       
-        <h1 id="Menu"><a href="#Menu" class="headerlink" title="Menu"></a>Menu</h1><p><strong>建立menu文件</strong></p>
-<p>在res目录下建menu文件夹，再在menu文件夹下建立一个Menu resource file，假设命名为main</p>
-<p><strong>添加菜单项</strong></p>
-<p>通过<code>&lt;item&gt;</code>标签添加项目，增加id和title属性等。</p>
-<p><strong>创建菜单</strong></p>
-<p>在Activity中创建菜单，重写onCreateOptionsMenu()方法(快捷键ctrl+O)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</span><br><span class="line">    getMenuInflater().inflate(R.menu.main, menu);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过getMenuInflater方法得到MenuInflater对象，然后调用该对象的inflate方法创建菜单，inflate方法中有两个参数:</p>
-<ul>
-<li>指定通过哪一个资源文件创建菜单，这里是R.menu.main</li>
-<li>指定菜单项将添加到哪一个对象中，这里使用方法中传入的menu参数，然后通过返回true表示允许创建的菜单显示出来</li>
-</ul>
-<p><strong>定义菜单响应事件</strong></p>
-<p>重写onOptionsItemSelected()方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (item.getItemId()) &#123;</span><br><span class="line">        <span class="keyword">case</span> R.id.add_item:</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"you clicked Add"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> R.id.remove_item:</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"you clicked remove"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="销毁活动"><a href="#销毁活动" class="headerlink" title="销毁活动"></a>销毁活动</h1><ul>
-<li><p>方法一</p>
-<p>手机上back</p>
-</li>
-<li><p>方法二</p>
-<p>调用finish()方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//Toast.makeText(FirstActivity.this, "HElloWOrld", Toast.LENGTH_SHORT).show();	</span></span><br><span class="line">        finish();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+        <p><strong>Toast是Android系统提供的一种提醒方式</strong></p>
+<p>定义一个弹出Toast的触发点，例如点击按钮弹出一个Toast，则在onCreate()方法中添加如下代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Button button1 = (Button) findViewById(R.id.button_1);</span><br><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"You clicked Button1"</span>, </span><br><span class="line">                      Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -424,8 +402,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/13/Android学习之路--Toast/" rel="next" title="Android学习之路--Toast">
-                <i class="fa fa-chevron-left"></i> Android学习之路--Toast
+              <a href="/2018/05/13/Android学习之路-Log工具/" rel="next" title="Android学习之路--Log工具">
+                <i class="fa fa-chevron-left"></i> Android学习之路--Log工具
               </a>
             
           </div>
@@ -434,8 +412,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/13/Android学习之路--Intent/" rel="prev" title="Android学习之路--Intent">
-                Android学习之路--Intent <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/13/Android学习之路-Menu&销毁活动/" rel="prev" title="Android学习之路--Menu&销毁活动">
+                Android学习之路--Menu&销毁活动 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -485,17 +463,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -514,7 +483,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -557,22 +526,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Menu"><span class="nav-number">1.</span> <span class="nav-text">Menu</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#销毁活动"><span class="nav-number">2.</span> <span class="nav-text">销毁活动</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

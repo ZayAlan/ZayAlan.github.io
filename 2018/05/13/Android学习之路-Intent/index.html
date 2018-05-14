@@ -106,11 +106,11 @@
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android学习之路--Intent">
-<meta property="og:url" content="http://yoursite.com/2018/05/13/Android学习之路--Intent/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/05/13/Android学习之路-Intent/index.html">
 <meta property="og:site_name" content="Zay&#39;s Blog">
 <meta property="og:description" content="Intent 是Android程序中各组件之间进行交互的一种方式，不仅可以指明当前组件想要执行的动作，还可以在不同组件之间传递数据。一般可被用于启动活动、启动服务以及发送广播等场景。 下面建立在已有两个Activity（FirstActivity和SecondActivity）的基础上进行。 使用显示Intent启动活动，Intent的“意图”明显，故称之为显示Intent。通过修改FirstAc">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-14T02:54:05.463Z">
+<meta property="og:updated_time" content="2018-05-14T06:43:53.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android学习之路--Intent">
 <meta name="twitter:description" content="Intent 是Android程序中各组件之间进行交互的一种方式，不仅可以指明当前组件想要执行的动作，还可以在不同组件之间传递数据。一般可被用于启动活动、启动服务以及发送广播等场景。 下面建立在已有两个Activity（FirstActivity和SecondActivity）的基础上进行。 使用显示Intent启动活动，Intent的“意图”明显，故称之为显示Intent。通过修改FirstAc">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/13/Android学习之路--Intent/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/13/Android学习之路-Intent/"/>
 
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/Android学习之路--Intent/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/Android学习之路-Intent/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zay Alan">
@@ -345,7 +345,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-14 10:54:05" itemprop="dateModified" datetime="2018-05-14T10:54:05+08:00">2018-05-14</time>
+                <time title="修改时间：2018-05-14 14:43:53" itemprop="dateModified" datetime="2018-05-14T14:43:53+08:00">2018-05-14</time>
               
             
           </span>
@@ -462,6 +462,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span></span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(FirstActivity.<span class="keyword">this</span>, SecondActivity.class);</span><br><span class="line">        startActivityForResult(intent, <span class="number">1</span>); <span class="comment">//请求码是唯一值就可以了</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>接下来在SecondActivity中</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.second_layout);</span><br><span class="line">        Button button2 = (Button) findViewById(R.id.button_2);</span><br><span class="line">        button2.setOnClickListener(<span class="keyword">new</span> View.OnClickListener()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span></span>&#123;</span><br><span class="line">                Intent intent = <span class="keyword">new</span> Intent(); <span class="comment">//仅用来传递数据，无"意图"</span></span><br><span class="line">                intent.putExtra(<span class="string">"data_return"</span>, <span class="string">"Hello FirstActivity"</span>);</span><br><span class="line">                setResult(RESULT_OK, intent);</span><br><span class="line">                finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用startActivityForResult()方法启动SecondActivity，在其被销毁后会回调上一个活动的<code>onActivityResult()</code>方法，因此我们需要在FirstActivity中重写这个方法来得到返回的数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span></span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (requestCode)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span>(resultCode == RESULT_OK)&#123;</span><br><span class="line">                String returnedData = data.getStringExtra(<span class="string">"data_return"</span>);</span><br><span class="line">                Log.d(<span class="string">"FirstActivity"</span>, returnedData);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>tips: onActivityResult() 共有三个参数，分别是请求码，处理结果和携带着返回数据的Intent</em></p>
+<hr>
+<p>如果用户是通过Back键回到FirstActivity的，则可以通过在SecondActivity中重写<code>onBackPressed()</code>方法来实现返回数据<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBackPressed</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">    intent.putExtra(<span class="string">"data_return"</span>, <span class="string">"Hello FirstActivity"</span>);</span><br><span class="line">    setResult(RESULT_OK, intent);</span><br><span class="line">    finish();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -494,7 +500,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/13/Android学习之路--Menu&销毁活动/" rel="next" title="Android学习之路--Menu&销毁活动">
+              <a href="/2018/05/13/Android学习之路-Menu&销毁活动/" rel="next" title="Android学习之路--Menu&销毁活动">
                 <i class="fa fa-chevron-left"></i> Android学习之路--Menu&销毁活动
               </a>
             
@@ -503,6 +509,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/14/Android学习之路-活动的启动模式/" rel="prev" title="Android学习之路--活动的启动模式">
+                Android学习之路--活动的启动模式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -580,7 +590,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
