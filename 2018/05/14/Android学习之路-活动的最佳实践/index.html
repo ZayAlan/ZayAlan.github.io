@@ -102,17 +102,18 @@
 
 
 
-  <meta name="description" content="a singler who loves fucking code">
+  <meta name="description" content="知晓当前是在哪一个活动如何根据程序当前的界面就判断出这是哪一个活动？ 新建一个BaseActivity类，不用在AndroidManifest.xml中注册，创建一个普通的java类就行 1234567public class BaseActivity extends AppCompatActivity&amp;#123;    @Override    protected void onCreate(B">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android学习之路--活动的最佳实践">
 <meta property="og:url" content="http://yoursite.com/2018/05/14/Android学习之路-活动的最佳实践/index.html">
 <meta property="og:site_name" content="Zay&#39;s Blog">
-<meta property="og:description" content="a singler who loves fucking code">
+<meta property="og:description" content="知晓当前是在哪一个活动如何根据程序当前的界面就判断出这是哪一个活动？ 新建一个BaseActivity类，不用在AndroidManifest.xml中注册，创建一个普通的java类就行 1234567public class BaseActivity extends AppCompatActivity&amp;#123;    @Override    protected void onCreate(B">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-14T14:44:46.432Z">
+<meta property="og:updated_time" content="2018-05-14T15:31:28.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android学习之路--活动的最佳实践">
-<meta name="twitter:description" content="a singler who loves fucking code">
+<meta name="twitter:description" content="知晓当前是在哪一个活动如何根据程序当前的界面就判断出这是哪一个活动？ 新建一个BaseActivity类，不用在AndroidManifest.xml中注册，创建一个普通的java类就行 1234567public class BaseActivity extends AppCompatActivity&amp;#123;    @Override    protected void onCreate(B">
 
 
 
@@ -327,9 +328,13 @@
                 
               
 
-              <time title="创建时间：2018-05-14 22:44:46" itemprop="dateCreated datePublished" datetime="2018-05-14T22:44:46+08:00">2018-05-14</time>
+              <time title="创建时间：2018-05-14 22:44:46 / 修改时间：23:31:28" itemprop="dateCreated datePublished" datetime="2018-05-14T22:44:46+08:00">2018-05-14</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -361,7 +366,24 @@
       
 
       
-        
+        <h1 id="知晓当前是在哪一个活动"><a href="#知晓当前是在哪一个活动" class="headerlink" title="知晓当前是在哪一个活动"></a>知晓当前是在哪一个活动</h1><p>如何根据程序当前的界面就判断出这是哪一个活动？</p>
+<p>新建一个BaseActivity类，不用在AndroidManifest.xml中注册，创建一个普通的java类就行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        Log.d(<span class="string">"BaseActivity"</span>, getClass().getSimpleName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来让BaseActivity类成为项目中所有活动的父类，运行程序并进入活动界面，当前活动的类名就会在logcat中被打印出来。</p>
+<h1 id="随时随地退出程序"><a href="#随时随地退出程序" class="headerlink" title="随时随地退出程序"></a>随时随地退出程序</h1><p>实现一个随时随地都能退出程序的方案，只需要一个专门的集合类对所有的活动进行管理。</p>
+<p>新建一个ActivityCollector类作为活动管理器:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCollector</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Activity&gt; activities = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addActivity</span><span class="params">(Activity activity)</span></span>&#123;</span><br><span class="line">        activities.add(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeActivity</span><span class="params">(Activity activity)</span></span>&#123;</span><br><span class="line">        activities.remove(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">finishAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(Activity activity: activities)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!activity.isFinishing())&#123;</span><br><span class="line">                activity.finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来修改BaseActivity：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        Log.d(<span class="string">"BaseActivity"</span>, getClass().getSimpleName());</span><br><span class="line">        ActivityCollector.addActivity(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        ActivityCollector.removeActivity(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后，在任何地方退出程序只需要调用<code>ActivityCollector.finishAll()</code>方法就可以了。</p>
+<p>还可以在onDestroy中加上杀掉当前进程的代码，以保证程序完全退出。<br><code>android.os.Process.killProcess(android.os.Process.myPid());</code></p>
+<h1 id="启动活动的最佳方法"><a href="#启动活动的最佳方法" class="headerlink" title="启动活动的最佳方法"></a>启动活动的最佳方法</h1><p>假设在启动SecondActivity时传递进两个需要使用的字符串参数，一般做法是在FirstActivity中使用Intent:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(FirstActivity.<span class="keyword">this</span>, SecondActivity.class);</span><br><span class="line">intent.putExtra(<span class="string">"param1"</span>, <span class="string">"data1"</span>);</span><br><span class="line">intent.putExtra(<span class="string">"param2"</span>, <span class="string">"data2"</span>);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<p>但在实际工作对接项目时，SecondActivity在启动时还需要传递其他数据，此时，除了阅读SecondActivity中的源代码外，可以有如下更简便的方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在SecondActivity中增加一个actionStart()方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondActivity</span> <span class="keyword">extends</span> <span class="title">BaseActivity</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">actionStart</span><span class="params">(Context context, String data1, String data2)</span></span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(context, SecondActivity.class);</span><br><span class="line">        intent.putExtra(<span class="string">"param1"</span>, data1);</span><br><span class="line">        intent.putExtra(<span class="string">"param2"</span>, data2);</span><br><span class="line">        context.startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在在FirstActivity中启动活动只需一行代码：</p>
+<p><code>SecondActivity.actionStart(FirstActivity.this, &quot;data1&quot;, &quot;data2&quot;);</code></p>
+
       
     </div>
 
@@ -378,6 +400,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+          
+        </div>
       
 
       
@@ -445,8 +473,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -508,6 +545,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知晓当前是在哪一个活动"><span class="nav-number">1.</span> <span class="nav-text">知晓当前是在哪一个活动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#随时随地退出程序"><span class="nav-number">2.</span> <span class="nav-text">随时随地退出程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动活动的最佳方法"><span class="nav-number">3.</span> <span class="nav-text">启动活动的最佳方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
