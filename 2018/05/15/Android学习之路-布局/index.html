@@ -102,18 +102,18 @@
 
 
 
-  <meta name="description" content="LinearLayoutandroid:layout_gravity属性android:gravity属性用于指定文字在控件中的对齐方式，而本属性用于指定控件在布局中的对齐方式。 android:layout_weight属性">
+  <meta name="description" content="百分比布局在app/build.gradle文件的dependencies闭包中添加如下内容:123456789dependencies &amp;#123;    implementation fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])    implementation &apos;com.android.support:appcompat-v7:27.1.1&apos;    i">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android学习之路--布局">
 <meta property="og:url" content="http://yoursite.com/2018/05/15/Android学习之路-布局/index.html">
 <meta property="og:site_name" content="Zay&#39;s Blog">
-<meta property="og:description" content="LinearLayoutandroid:layout_gravity属性android:gravity属性用于指定文字在控件中的对齐方式，而本属性用于指定控件在布局中的对齐方式。 android:layout_weight属性">
+<meta property="og:description" content="百分比布局在app/build.gradle文件的dependencies闭包中添加如下内容:123456789dependencies &amp;#123;    implementation fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])    implementation &apos;com.android.support:appcompat-v7:27.1.1&apos;    i">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-15T10:05:48.618Z">
+<meta property="og:updated_time" content="2018-05-19T02:48:27.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android学习之路--布局">
-<meta name="twitter:description" content="LinearLayoutandroid:layout_gravity属性android:gravity属性用于指定文字在控件中的对齐方式，而本属性用于指定控件在布局中的对齐方式。 android:layout_weight属性">
+<meta name="twitter:description" content="百分比布局在app/build.gradle文件的dependencies闭包中添加如下内容:123456789dependencies &amp;#123;    implementation fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])    implementation &apos;com.android.support:appcompat-v7:27.1.1&apos;    i">
 
 
 
@@ -328,12 +328,24 @@
                 
               
 
-              <time title="创建时间：2018-05-15 16:51:52 / 修改时间：18:05:48" itemprop="dateCreated datePublished" datetime="2018-05-15T16:51:52+08:00">2018-05-15</time>
+              <time title="创建时间：2018-05-15 16:51:52" itemprop="dateCreated datePublished" datetime="2018-05-15T16:51:52+08:00">2018-05-15</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-19 10:48:27" itemprop="dateModified" datetime="2018-05-19T10:48:27+08:00">2018-05-19</time>
               
             
           </span>
@@ -366,8 +378,9 @@
       
 
       
-        <h1 id="LinearLayout"><a href="#LinearLayout" class="headerlink" title="LinearLayout"></a>LinearLayout</h1><h2 id="android-layout-gravity属性"><a href="#android-layout-gravity属性" class="headerlink" title="android:layout_gravity属性"></a><code>android:layout_gravity</code>属性</h2><p><code>android:gravity</code>属性用于指定文字在控件中的对齐方式，而本属性用于指定控件在布局中的对齐方式。</p>
-<h2 id="android-layout-weight属性"><a href="#android-layout-weight属性" class="headerlink" title="android:layout_weight属性"></a><code>android:layout_weight</code>属性</h2>
+        <h1 id="百分比布局"><a href="#百分比布局" class="headerlink" title="百分比布局"></a>百分比布局</h1><p>在<code>app/build.gradle</code>文件的dependencies闭包中添加如下内容:<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    implementation <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</span><br><span class="line">    implementation <span class="string">'com.android.support:appcompat-v7:27.1.1'</span></span><br><span class="line">    implementation <span class="string">'com.android.support:percent:27.1.1'</span></span><br><span class="line">    implementation <span class="string">'com.android.support.constraint:constraint-layout:1.1.0'</span></span><br><span class="line">    testImplementation <span class="string">'junit:junit:4.12'</span></span><br><span class="line">    androidTestImplementation <span class="string">'com.android.support.test:runner:1.0.2'</span></span><br><span class="line">    androidTestImplementation <span class="string">'com.android.support.test.espresso:espresso-core:3.0.2'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在activity_main.xml中代码如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">android.support.percent.PercentFrameLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/button1"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"Button 1"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_gravity</span>=<span class="string">"left|top"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/button2"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"Button 2"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_gravity</span>=<span class="string">"right|top"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/button3"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"Button 3"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_gravity</span>=<span class="string">"left|bottom"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/button4"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"Button 4"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_gravity</span>=<span class="string">"right|bottom"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">android.support.percent.PercentFrameLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -545,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LinearLayout"><span class="nav-number">1.</span> <span class="nav-text">LinearLayout</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#android-layout-gravity属性"><span class="nav-number">1.1.</span> <span class="nav-text">android:layout_gravity属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#android-layout-weight属性"><span class="nav-number">1.2.</span> <span class="nav-text">android:layout_weight属性</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#百分比布局"><span class="nav-number">1.</span> <span class="nav-text">百分比布局</span></a></li></ol></div>
             
 
           </div>
