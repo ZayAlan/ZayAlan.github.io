@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="百分比布局在app/build.gradle文件的dependencies闭包中添加如下内容:123456789dependencies &amp;#123;    implementation fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])    implementation &apos;com.android.support:appcompat-v7:27.1.1&apos;    i">
-<meta name="keywords" content="Android">
+  <meta name="description" content="数组元素循环右移问题一个数组A中存有N（N&amp;gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（M&amp;gt;=0）个位置，如果需要考虑程序移动数据的次数尽量少，则应如何设计移动的方法？ Tips：直接输出即可">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android学习之路--布局">
-<meta property="og:url" content="http://yoursite.com/2018/05/15/Android学习之路-布局/index.html">
+<meta property="og:title" content="算法笔记题">
+<meta property="og:url" content="http://yoursite.com/2018/07/15/算法笔记题/index.html">
 <meta property="og:site_name" content="Zay&#39;s Blog">
-<meta property="og:description" content="百分比布局在app/build.gradle文件的dependencies闭包中添加如下内容:123456789dependencies &amp;#123;    implementation fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])    implementation &apos;com.android.support:appcompat-v7:27.1.1&apos;    i">
+<meta property="og:description" content="数组元素循环右移问题一个数组A中存有N（N&amp;gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（M&amp;gt;=0）个位置，如果需要考虑程序移动数据的次数尽量少，则应如何设计移动的方法？ Tips：直接输出即可">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-19T02:48:27.650Z">
+<meta property="og:updated_time" content="2018-07-15T06:41:53.233Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android学习之路--布局">
-<meta name="twitter:description" content="百分比布局在app/build.gradle文件的dependencies闭包中添加如下内容:123456789dependencies &amp;#123;    implementation fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])    implementation &apos;com.android.support:appcompat-v7:27.1.1&apos;    i">
+<meta name="twitter:title" content="算法笔记题">
+<meta name="twitter:description" content="数组元素循环右移问题一个数组A中存有N（N&amp;gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（M&amp;gt;=0）个位置，如果需要考虑程序移动数据的次数尽量少，则应如何设计移动的方法？ Tips：直接输出即可">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/15/Android学习之路-布局/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/15/算法笔记题/"/>
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>Android学习之路--布局 | Zay's Blog</title>
+  <title>算法笔记题 | Zay's Blog</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/15/Android学习之路-布局/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/算法笔记题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zay Alan">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android学习之路--布局
+          <h1 class="post-title" itemprop="name headline">算法笔记题
               
             
           </h1>
@@ -328,24 +328,12 @@
                 
               
 
-              <time title="创建时间：2018-05-15 16:51:52" itemprop="dateCreated datePublished" datetime="2018-05-15T16:51:52+08:00">2018-05-15</time>
+              <time title="创建时间：2018-07-15 14:34:02 / 修改时间：14:41:53" itemprop="dateCreated datePublished" datetime="2018-07-15T14:34:02+08:00">2018-07-15</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-05-19 10:48:27" itemprop="dateModified" datetime="2018-05-19T10:48:27+08:00">2018-05-19</time>
               
             
           </span>
@@ -378,8 +366,8 @@
       
 
       
-        <h1 id="百分比布局"><a href="#百分比布局" class="headerlink" title="百分比布局"></a>百分比布局</h1><p>在<code>app/build.gradle</code>文件的dependencies闭包中添加如下内容:<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    implementation <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</span><br><span class="line">    implementation <span class="string">'com.android.support:appcompat-v7:27.1.1'</span></span><br><span class="line">    implementation <span class="string">'com.android.support:percent:27.1.1'</span></span><br><span class="line">    implementation <span class="string">'com.android.support.constraint:constraint-layout:1.1.0'</span></span><br><span class="line">    testImplementation <span class="string">'junit:junit:4.12'</span></span><br><span class="line">    androidTestImplementation <span class="string">'com.android.support.test:runner:1.0.2'</span></span><br><span class="line">    androidTestImplementation <span class="string">'com.android.support.test.espresso:espresso-core:3.0.2'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在activity_main.xml中代码如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">android.support.percent.PercentFrameLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/button1"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"Button 1"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_gravity</span>=<span class="string">"left|top"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/button2"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"Button 2"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_gravity</span>=<span class="string">"right|top"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/button3"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"Button 3"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_gravity</span>=<span class="string">"left|bottom"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/button4"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"Button 4"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_gravity</span>=<span class="string">"right|bottom"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">android.support.percent.PercentFrameLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+        <h3 id="数组元素循环右移问题"><a href="#数组元素循环右移问题" class="headerlink" title="数组元素循环右移问题"></a>数组元素循环右移问题</h3><p>一个数组A中存有N（N&gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（M&gt;=0）个位置，如果需要考虑程序移动数据的次数尽量少，则应如何设计移动的方法？</p>
+<p>Tips：直接输出即可</p>
 
       
     </div>
@@ -400,7 +388,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
           
         </div>
       
@@ -413,8 +401,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/15/Android学习之路-UI控件/" rel="next" title="Android学习之路--UI控件">
-                <i class="fa fa-chevron-left"></i> Android学习之路--UI控件
+              <a href="/2018/05/25/软技能-学习方法/" rel="next" title="软技能-学习方法">
+                <i class="fa fa-chevron-left"></i> 软技能-学习方法
               </a>
             
           </div>
@@ -422,10 +410,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/17/CET-SpokenEnglish-preparation/" rel="prev" title="CET-SpokenEnglish-preparation">
-                CET-SpokenEnglish-preparation <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -562,7 +546,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#百分比布局"><span class="nav-number">1.</span> <span class="nav-text">百分比布局</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组元素循环右移问题"><span class="nav-number">1.</span> <span class="nav-text">数组元素循环右移问题</span></a></li></ol></div>
             
 
           </div>

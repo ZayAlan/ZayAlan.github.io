@@ -285,6 +285,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/14/Android学习之路-活动的启动模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zay Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/05/13/5af7c36518aa2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zay's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/14/Android学习之路-活动的启动模式/" itemprop="url">
+                  Android学习之路--活动的启动模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-14 17:30:46 / 修改时间：17:59:29" itemprop="dateCreated datePublished" datetime="2018-05-14T17:30:46+08:00">2018-05-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在实际项目中我们应该根据特定的需求为每个活动指定恰当的启动模式，一共有四种。</p>
+<table>
+<thead>
+<tr>
+<th>启动模式</th>
+<th>作用</th>
+<th>示意图</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>standard</td>
+<td>活动默认的启动模式，每当启动一个新活动，它就会在返回栈中入栈，并处于栈顶的位置，每次启动一个活动都会创建该活动的一个新的实例</td>
+<td><img src="https://i.loli.net/2018/05/14/5af95a0a7c14e.png" alt="standard"></td>
+</tr>
+<tr>
+<td>singleTop</td>
+<td>在启动活动时如果发现返回栈的栈顶已经是该活动，则认为可以直接使用它，不会再创建新的活动实例，如果不是该活动，则会继续创建新的实例</td>
+<td><img src="https://i.loli.net/2018/05/14/5af95a78c80bb.png" alt="singleTop"></td>
+</tr>
+<tr>
+<td>singleTask</td>
+<td>可以很好的解决重复创建栈顶活动的问题，每次启动该活动时系统首先会在返回栈中检查是否存在该活动的实例，如果发现已存在则直接使用该实例，并把这个活动之上的所有活动统统出栈，如果没有发现就会创建一个新的活动实例</td>
+<td><img src="https://i.loli.net/2018/05/14/5af95ad88a970.png" alt="singleTask"></td>
+</tr>
+<tr>
+<td>singleInstance</td>
+<td>启用一个新的返回栈来管理这个活动，解决共享活动实例的问题</td>
+<td><img src="https://i.loli.net/2018/05/14/5af95b20a3d38.png" alt="singleInstance"></td>
+</tr>
+</tbody>
+</table>
+<p>使用方法为修改<code>AndroidManifest.xml</code>中该活动的启动模式：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:launchMode</span>=<span class="string">"singleTask"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/Android学习之路-Intent/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1025,7 +1197,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1046,7 +1218,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
