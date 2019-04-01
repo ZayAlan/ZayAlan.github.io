@@ -331,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2019-04-01 18:44:46 / 修改时间：18:55:09" itemprop="dateCreated datePublished" datetime="2019-04-01T18:44:46+08:00">2019-04-01</time>
+              <time title="创建时间：2019-04-01 18:44:46 / 修改时间：19:18:25" itemprop="dateCreated datePublished" datetime="2019-04-01T18:44:46+08:00">2019-04-01</time>
             
 
             
@@ -375,7 +375,10 @@
 <h1 id="map的定义及访问"><a href="#map的定义及访问" class="headerlink" title="map的定义及访问"></a>map的定义及访问</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; mp1;</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;, <span class="keyword">int</span>&gt; mp2;</span><br><span class="line"></span><br><span class="line"><span class="comment">//下标访问</span></span><br><span class="line"><span class="keyword">int</span> a = mp1[<span class="string">"test"</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//迭代器访问</span></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;::iterator it=mp.begin(); it!=mp.end(); it++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c %d"</span>, it-&gt;first , it-&gt;second);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>map会以键从小到大的顺序自动排序。</p>
 <h1 id="map的常用函数"><a href="#map的常用函数" class="headerlink" title="map的常用函数"></a>map的常用函数</h1><ol>
-<li>find(key)，返回键为key的映射的迭代器。</li>
+<li><p>find(key)，返回键为key的映射的迭代器。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> iter = m.find(key);</span><br><span class="line"> <span class="keyword">if</span>(iter!=m.end())</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">return</span> iter-&gt;second;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> null;</span><br></pre></td></tr></table></figure>
+<p>find()不成功则为m.end()</p>
+</li>
 <li>erase()<br>1) mp.erase(it)，it为需要删除的元素的迭代器。<br>2) mp.erase(key), key为欲删除的映射的键。<br>3) mp.erase(first, last), first和last为需要删除的区间的起始迭代器和末尾迭代器的下一个地址。</li>
 <li>size(), 获得map中映射的对数。</li>
 <li>clear(), 用来清空map中的所有元素。</li>
@@ -496,7 +499,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-31 20:01:26" itemprop="dateModified" datetime="2019-03-31T20:01:26+08:00">2019-03-31</time>
+                <time title="修改时间：2019-04-01 19:46:28" itemprop="dateModified" datetime="2019-04-01T19:46:28+08:00">2019-04-01</time>
               
             
           </span>
@@ -536,6 +539,7 @@
 <li>结构体的设计上，应该包含哪些元素，自己写的时候没有考虑完全，导致后续代码中出现冗余和思路不够清晰的问题。</li>
 <li>结构体的初始化不熟练，数组初始化不熟练，memset等。<br>代码后续重新实现后再更新。</li>
 </ol>
+<h1 id="Cars-on-Campus"><a href="#Cars-on-Campus" class="headerlink" title="Cars on Campus"></a>Cars on Campus</h1><p>使用到了map容器，自己第一次做时忽视了对原数据的车牌号也进行排序，使得处理难以进行。在对车牌号也进行分类排序之后，<br>判断有效数据就变得更加简单了，再建立一个存放有效数据的数组保存对应的有效对，后续能够处理得到结果。<br>代码后续重新实现后更新。</p>
 
           
         

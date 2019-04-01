@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Zay&#39;s Blog">
 <meta property="og:description" content="可用来处理hashTable数组处理不了的情况。 map的定义及访问1234567891011121314#include&amp;lt;map&amp;gt;using namespace std;map&amp;lt;string, int&amp;gt; mp1;map&amp;lt;set&amp;lt;int&amp;gt;, int&amp;gt; mp2;//下标访问int a = mp1[&quot;test&quot;];//迭代器访问for(map&amp;lt;ch">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-01T10:55:09.060Z">
+<meta property="og:updated_time" content="2019-04-01T11:18:25.670Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="map的应用总结">
 <meta name="twitter:description" content="可用来处理hashTable数组处理不了的情况。 map的定义及访问1234567891011121314#include&amp;lt;map&amp;gt;using namespace std;map&amp;lt;string, int&amp;gt; mp1;map&amp;lt;set&amp;lt;int&amp;gt;, int&amp;gt; mp2;//下标访问int a = mp1[&quot;test&quot;];//迭代器访问for(map&amp;lt;ch">
@@ -328,7 +328,7 @@
                 
               
 
-              <time title="创建时间：2019-04-01 18:44:46 / 修改时间：18:55:09" itemprop="dateCreated datePublished" datetime="2019-04-01T18:44:46+08:00">2019-04-01</time>
+              <time title="创建时间：2019-04-01 18:44:46 / 修改时间：19:18:25" itemprop="dateCreated datePublished" datetime="2019-04-01T18:44:46+08:00">2019-04-01</time>
             
 
             
@@ -370,7 +370,10 @@
 <h1 id="map的定义及访问"><a href="#map的定义及访问" class="headerlink" title="map的定义及访问"></a>map的定义及访问</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; mp1;</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;, <span class="keyword">int</span>&gt; mp2;</span><br><span class="line"></span><br><span class="line"><span class="comment">//下标访问</span></span><br><span class="line"><span class="keyword">int</span> a = mp1[<span class="string">"test"</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//迭代器访问</span></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;::iterator it=mp.begin(); it!=mp.end(); it++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c %d"</span>, it-&gt;first , it-&gt;second);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>map会以键从小到大的顺序自动排序。</p>
 <h1 id="map的常用函数"><a href="#map的常用函数" class="headerlink" title="map的常用函数"></a>map的常用函数</h1><ol>
-<li>find(key)，返回键为key的映射的迭代器。</li>
+<li><p>find(key)，返回键为key的映射的迭代器。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> iter = m.find(key);</span><br><span class="line"> <span class="keyword">if</span>(iter!=m.end())</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">return</span> iter-&gt;second;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> null;</span><br></pre></td></tr></table></figure>
+<p>find()不成功则为m.end()</p>
+</li>
 <li>erase()<br>1) mp.erase(it)，it为需要删除的元素的迭代器。<br>2) mp.erase(key), key为欲删除的映射的键。<br>3) mp.erase(first, last), first和last为需要删除的区间的起始迭代器和末尾迭代器的下一个地址。</li>
 <li>size(), 获得map中映射的对数。</li>
 <li>clear(), 用来清空map中的所有元素。</li>
