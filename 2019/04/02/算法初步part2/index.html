@@ -102,18 +102,18 @@
 
 
 
-  <meta name="description" content="To Fill or Not to Fill贪心算法的加油问题，策略如下：从满油状态下能到达的所有加油站中选出下一个前往的加油站：  优先前往更低油价的加油站 在没有更低油价的加油站时，前往油价尽可能低的加油站 没有加油站可以到达或到达终点时算法结束  代码后续实现后更新。">
+  <meta name="description" content="To Fill or Not to Fill贪心算法的加油问题，策略如下：从满油状态下能到达的所有加油站中选出下一个前往的加油站：  优先前往更低油价的加油站 在没有更低油价的加油站时，前往油价尽可能低的加油站 没有加油站可以到达或到达终点时算法结束  代码后续实现后更新。 Insert or Merge先进行插入排序，如果执行过程中发现与给定序列吻合，那么说明是插入排序，计算出下一步的序列后结束">
 <meta name="keywords" content="pat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法初步part2">
 <meta property="og:url" content="http://yoursite.com/2019/04/02/算法初步part2/index.html">
 <meta property="og:site_name" content="Zay&#39;s Blog">
-<meta property="og:description" content="To Fill or Not to Fill贪心算法的加油问题，策略如下：从满油状态下能到达的所有加油站中选出下一个前往的加油站：  优先前往更低油价的加油站 在没有更低油价的加油站时，前往油价尽可能低的加油站 没有加油站可以到达或到达终点时算法结束  代码后续实现后更新。">
+<meta property="og:description" content="To Fill or Not to Fill贪心算法的加油问题，策略如下：从满油状态下能到达的所有加油站中选出下一个前往的加油站：  优先前往更低油价的加油站 在没有更低油价的加油站时，前往油价尽可能低的加油站 没有加油站可以到达或到达终点时算法结束  代码后续实现后更新。 Insert or Merge先进行插入排序，如果执行过程中发现与给定序列吻合，那么说明是插入排序，计算出下一步的序列后结束">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-02T13:51:07.663Z">
+<meta property="og:updated_time" content="2019-04-05T01:36:36.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法初步part2">
-<meta name="twitter:description" content="To Fill or Not to Fill贪心算法的加油问题，策略如下：从满油状态下能到达的所有加油站中选出下一个前往的加油站：  优先前往更低油价的加油站 在没有更低油价的加油站时，前往油价尽可能低的加油站 没有加油站可以到达或到达终点时算法结束  代码后续实现后更新。">
+<meta name="twitter:description" content="To Fill or Not to Fill贪心算法的加油问题，策略如下：从满油状态下能到达的所有加油站中选出下一个前往的加油站：  优先前往更低油价的加油站 在没有更低油价的加油站时，前往油价尽可能低的加油站 没有加油站可以到达或到达终点时算法结束  代码后续实现后更新。 Insert or Merge先进行插入排序，如果执行过程中发现与给定序列吻合，那么说明是插入排序，计算出下一步的序列后结束">
 
 
 
@@ -328,12 +328,24 @@
                 
               
 
-              <time title="创建时间：2019-04-02 20:04:48 / 修改时间：21:51:07" itemprop="dateCreated datePublished" datetime="2019-04-02T20:04:48+08:00">2019-04-02</time>
+              <time title="创建时间：2019-04-02 20:04:48" itemprop="dateCreated datePublished" datetime="2019-04-02T20:04:48+08:00">2019-04-02</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-05 09:36:36" itemprop="dateModified" datetime="2019-04-05T09:36:36+08:00">2019-04-05</time>
               
             
           </span>
@@ -373,6 +385,7 @@
 <li>没有加油站可以到达或到达终点时算法结束</li>
 </ol>
 <p>代码后续实现后更新。</p>
+<h1 id="Insert-or-Merge"><a href="#Insert-or-Merge" class="headerlink" title="Insert or Merge"></a>Insert or Merge</h1><p>先进行插入排序，如果执行过程中发现与给定序列吻合，那么说明是插入排序，计算出下一步的序列后结束算法；<br>如果不是插入排序，那么一定是归并排序，模拟归并排序的过程，如果执行过程中发现与给定序列吻合，那么计算出下一步的序列后结束算法。<br>这样将问题转换为了只需要判断该序列是否是插入排序就行了。</p>
 
       
     </div>
@@ -549,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#To-Fill-or-Not-to-Fill"><span class="nav-number">1.</span> <span class="nav-text">To Fill or Not to Fill</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#To-Fill-or-Not-to-Fill"><span class="nav-number">1.</span> <span class="nav-text">To Fill or Not to Fill</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Insert-or-Merge"><span class="nav-number">2.</span> <span class="nav-text">Insert or Merge</span></a></li></ol></div>
             
 
           </div>
