@@ -285,6 +285,303 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/11/大整数运算/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zay Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/05/13/5af7c36518aa2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zay's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/11/大整数运算/" itemprop="url">
+                  大整数运算
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-11 20:43:11" itemprop="dateCreated datePublished" datetime="2019-04-11T20:43:11+08:00">2019-04-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-12 21:14:41" itemprop="dateModified" datetime="2019-04-12T21:14:41+08:00">2019-04-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="大整数的存储"><a href="#大整数的存储" class="headerlink" title="大整数的存储"></a>大整数的存储</h1><p>使用数组的形式存储，整数的高位存储在数组的高位，整数的低位存储在数组的低位。并定义一个int型变量len来记录其长度。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">bign</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> d[<span class="number">1000</span>];</span><br><span class="line">    <span class="keyword">int</span> len;</span><br><span class="line">    bign()&#123;</span><br><span class="line">        <span class="built_in">memset</span>(d, <span class="number">0</span>, <span class="keyword">sizeof</span>(d));</span><br><span class="line">        len = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>读取时采用字符数组的方式读入，然后反转后用bign数据类型存储。</p>
+<h1 id="高精度加法"><a href="#高精度加法" class="headerlink" title="高精度加法"></a>高精度加法</h1><p>将该位上的两个数字与进位相加，得到的结果取个位数作为该位的结果，取十位数作为新的进位。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">bign <span class="title">add</span><span class="params">(bign a, bign b)</span></span>&#123;</span><br><span class="line">    bign c;</span><br><span class="line">    <span class="keyword">int</span> carry=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.len || i&lt;b.len;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> temp = a.d[i]+b.d[i]+carry;</span><br><span class="line">        c.d[c.len++]=temp%<span class="number">10</span>;</span><br><span class="line">        carry = temp/<span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(carry!=<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        c.d[c.len++]=carry;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="高精度减法"><a href="#高精度减法" class="headerlink" title="高精度减法"></a>高精度减法</h1><p>比较被减位和减位，如果不够减，则令被减位的高位减1、被减位加10再进行减法；如果够减，则直接减。最后一步要注意减法后高位可能有多余的0，要去除它们，但也要保证结果至少有一位数。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">bign <span class="title">sub</span><span class="params">(bign a, bign b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    bign c;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.len || i&lt;b.len;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(a.d[i]&lt;b.d[i])</span><br><span class="line">        &#123;</span><br><span class="line">            a.d[i+<span class="number">1</span>]--;</span><br><span class="line">            a.d[i]+=<span class="number">10</span></span><br><span class="line">        &#125;</span><br><span class="line">        c.d[c.len++]=a.d[i]-b.d[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(c.len<span class="number">-1</span>&gt;=<span class="number">1</span> &amp;&amp; c.d[c.len<span class="number">-1</span>]==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        c.len--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="高精度与低精度的乘法"><a href="#高精度与低精度的乘法" class="headerlink" title="高精度与低精度的乘法"></a>高精度与低精度的乘法</h1><p>取bign的某位与int型整体相乘，再与进位相加，所得结果的个位数作为该位结果，高位部分作为新的进位。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">bign <span class="title">multi</span><span class="params">(bign a, bign b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    bign c;</span><br><span class="line">    <span class="keyword">int</span> carry=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.len;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> temp = a.d[i]*b+carry;</span><br><span class="line">        c.d[c.len++]=temp%<span class="number">10</span>;</span><br><span class="line">        carry=temp/<span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(carry!=<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        c.d[c.len++]=carry%<span class="number">10</span>;</span><br><span class="line">        carry/=<span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="高精度与低精度的除法"><a href="#高精度与低精度的除法" class="headerlink" title="高精度与低精度的除法"></a>高精度与低精度的除法</h1><p>上一步的余数乘以10加上该步的位，得到该步临时的被除数，将其与除数比较：如果不够除，则该位的商为0；如果够除，则商即为对应的商，余数即为对应的余数。最后一步要注意减法后高位可能有多余的0，要去除它们，但也要保证结果至少有一位数。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">bign <span class="title">divide</span><span class="params">(bign a, bign b,<span class="keyword">int</span>&amp; r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    bign c;</span><br><span class="line">    c.len = a.len;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=a.len<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        r=r*<span class="number">10</span>+a.d[i];</span><br><span class="line">        <span class="keyword">if</span>(r&lt;b) c.d[i]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            c.d[i]=r/b;</span><br><span class="line">            r = r%b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(c.len<span class="number">-1</span>&gt;=<span class="number">1</span> &amp;&amp; c.d[c.len<span class="number">-1</span>]==<span class="number">0</span>)&#123;</span><br><span class="line">        c.len--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/10/素数判断/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zay Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/05/13/5af7c36518aa2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zay's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/10/素数判断/" itemprop="url">
+                  素数判断
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-10 21:51:21 / 修改时间：21:54:38" itemprop="dateCreated datePublished" datetime="2019-04-10T21:51:21+08:00">2019-04-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="判断n是否是素数"><a href="#判断n是否是素数" class="headerlink" title="判断n是否是素数"></a>判断n是否是素数</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n&lt;=<span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">int</span> sqr = (<span class="keyword">int</span>)<span class="built_in">sqrt</span>(<span class="number">1.0</span>*n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=sqr;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//即除1和它本身外还包含别的因子</span></span><br><span class="line">        <span class="keyword">if</span>(n%i == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/10/最大公约数和最小公倍数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -476,6 +773,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-12 21:14:54" itemprop="dateModified" datetime="2019-04-12T21:14:54+08:00">2019-04-12</time>
+              
+            
           </span>
 
           
@@ -508,7 +821,10 @@
       
         
           
-            
+            <h1 id="A1049-Counting-Ones"><a href="#A1049-Counting-Ones" class="headerlink" title="A1049.Counting Ones"></a>A1049.Counting Ones</h1><p>这题有意思，在选取测试数据上给自己提个醒，有时间多回顾一下。</p>
+<h1 id="Rational-Sum"><a href="#Rational-Sum" class="headerlink" title="Rational Sum"></a>Rational Sum</h1><p>本题要求实现多个分数的加法，并将结果以带分数的形式展示，没找到错在哪。。。先放上来以后再debug吧<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Num</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> d;</span><br><span class="line">&#125;num[<span class="number">110</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">gcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a, <span class="keyword">long</span> <span class="keyword">long</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> gcd(b, a%b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> lcmNum;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d/%d"</span>,&amp;num[i].n,&amp;num[i].d);</span><br><span class="line">    &#125;</span><br><span class="line">    Num result=num[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        result.n=result.n*num[i].d+num[i].n*result.d;</span><br><span class="line">        result.d=result.d*num[i].d;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> gcdNum=gcd(result.n,result.d);</span><br><span class="line">    result.n/=gcdNum;</span><br><span class="line">    result.d/=gcdNum;</span><br><span class="line">    <span class="keyword">int</span> more=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(result.n&gt;result.d)</span><br><span class="line">    &#123;</span><br><span class="line">        more=result.n/result.d;</span><br><span class="line">        result.n=result.n%result.d;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d/%d"</span>,more,result.n,result.d);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d/%d"</span>,result.n,result.d);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Consecutive-Factors"><a href="#Consecutive-Factors" class="headerlink" title="Consecutive Factors"></a>Consecutive Factors</h1><p>策略：由于N不会被除自己以外的大于根号N的整数整除，因此只需要从2~根号N遍历连续整数的第一个，求此时N能被最多多少个连续整数的乘积整除。</p>
+
           
         
       
@@ -1520,326 +1836,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/26/入门模拟总结part1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zay Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i.loli.net/2018/05/13/5af7c36518aa2.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zay's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/26/入门模拟总结part1/" itemprop="url">
-                  入门模拟总结part1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-26 19:17:49" itemprop="dateCreated datePublished" datetime="2019-03-26T19:17:49+08:00">2019-03-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-05 15:52:39" itemprop="dateModified" datetime="2019-04-05T15:52:39+08:00">2019-04-05</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、A-B和C的大小判断"><a href="#一、A-B和C的大小判断" class="headerlink" title="一、A+B和C的大小判断"></a>一、A+B和C的大小判断</h1><h2 id="T-和-T"><a href="#T-和-T" class="headerlink" title="T--和--T"></a><code>T--</code>和<code>--T</code></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(T--)&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,T);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>此处while循环执行了T次，如果用<code>--T</code>则只循环T-1次</p>
-<h2 id="int型的数据范围"><a href="#int型的数据范围" class="headerlink" title="int型的数据范围"></a>int型的数据范围</h2><p>int型的数据范围是[-2^31,2^31-1]，因此在此题中两个int相加就会超过范围，<br>必须使用long long作为变量类型，输入输出格式必须为<code>%lld</code></p>
-<h2 id="long-long型的数据范围"><a href="#long-long型的数据范围" class="headerlink" title="long long型的数据范围"></a>long long型的数据范围</h2><p>long long的范围是[-2^63,2^63)，若判断A+B和C的大小问题，则有<br><strong>如果两个正数之和等于负数或是两个负数之和等于正数，那么就是溢出</strong><br>具体为：<br>1) A&gt;0,B&gt;0,A+B&lt;0,因此A+B&gt;C<br>2) A&lt;0,B&lt;0,A+B&gt;0,因此A+B&lt;C</p>
-<h1 id="二、一元多项式求导"><a href="#二、一元多项式求导" class="headerlink" title="二、一元多项式求导"></a>二、一元多项式求导</h1><p>代码（练习了vector<typename>::iterator it的使用）<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Element</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> norm;</span><br><span class="line">    <span class="keyword">int</span> ex;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;Element&gt; elements,newElements;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,e;</span><br><span class="line">    Element temp;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;e) != EOF)&#123;</span><br><span class="line">        temp.norm = n;</span><br><span class="line">        temp.ex = e;</span><br><span class="line">        elements.push_back(temp);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">vector</span>&lt;Element&gt;::iterator it = elements.begin();it!=elements.end();it++)&#123;</span><br><span class="line">        <span class="keyword">if</span>((*it).ex == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            temp.norm = (*it).norm*(*it).ex;</span><br><span class="line">            temp.ex = (*it).ex<span class="number">-1</span>;</span><br><span class="line">            newElements.push_back(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">vector</span>&lt;Element&gt;::iterator it = newElements.begin();it!=newElements.end();it++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(it+<span class="number">1</span>==newElements.end())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d %d"</span>,(*it).norm,(*it).ex);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d %d "</span>,(*it).norm,(*it).ex);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></typename></p>
-<p>tips:</p>
-<ol>
-<li>如果求导之后没有任何非零项，需要输出0 0。<br>这个题目中未说明，上述代码也没有考虑到这点。</li>
-<li>scanf手动中止输入的方法：<br>1) <code>scanf(&quot;&quot;) != EOF</code>输入直到文件末尾。<br>2) 在控制台中（Windows）回车后用ctrl+z再回车中止输入。(Linux中为ctrl+d)</li>
-</ol>
-<h1 id="三、A-B-for-Polynomials"><a href="#三、A-B-for-Polynomials" class="headerlink" title="三、A+B for Polynomials"></a>三、A+B for Polynomials</h1><p>简单做法：<br>定义double型数组p[n]表示幂次为n的项的系数，于是可以在读入两个多项式的时候就进行加法操作在p[n]上，其他细节操作添加上就行了。</p>
-<h1 id="四、多项式的乘法运算"><a href="#四、多项式的乘法运算" class="headerlink" title="四、多项式的乘法运算"></a>四、多项式的乘法运算</h1><p>简单做法:<br>先获得第一个多项式的系数，然后在输入第二个多项式的时候把每个系数循环与第一个多项式的系数相乘，指数同样操作，然后累加，输出。<br>同三一样，也只需要用到一个数组，边读入边处理。</p>
-<h1 id="五、成绩排名问题"><a href="#五、成绩排名问题" class="headerlink" title="五、成绩排名问题"></a>五、成绩排名问题</h1><p>如果只需要找最大最小值等，可以考虑直接在读取数据时就进行比较筛选，只对最大最小值进行存储，不必另建数组保存全部数据。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/25/日期处理和进制转换问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zay Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i.loli.net/2018/05/13/5af7c36518aa2.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zay's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/25/日期处理和进制转换问题/" itemprop="url">
-                  日期处理和进制转换问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-25 19:54:49" itemprop="dateCreated datePublished" datetime="2019-03-25T19:54:49+08:00">2019-03-25</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-05 15:52:05" itemprop="dateModified" datetime="2019-04-05T15:52:05+08:00">2019-04-05</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="日期处理问题"><a href="#日期处理问题" class="headerlink" title="日期处理问题"></a>日期处理问题</h1><p>思路：令日期不断加1天，直到第一个日期等于第二个日期为止，统计得出答案。<br>可用二维数组存放每个月的天数和平年闰年是否。</p>
-<h1 id="进制转换问题"><a href="#进制转换问题" class="headerlink" title="进制转换问题"></a>进制转换问题</h1><ol>
-<li>将P进制转换成十进制<br>从个位到高位起分别乘P的次方，后加起来即为对应的十进制数。</li>
-<li>将十进制转换成P进制<br>不断除以P取余数保存，直到商为0，将所得的余数以最后一次为最高位输出，即为对应的P进制数。</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1891,7 +1887,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
