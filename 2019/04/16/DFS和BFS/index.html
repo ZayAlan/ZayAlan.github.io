@@ -102,18 +102,18 @@
 
 
 
-  <meta name="description" content="a singler who loves fucking code">
+  <meta name="description" content="DFS深度优先搜索是一种枚举所有完整路径以遍历所有情况的搜索方法，可以使用栈或递归来实现。递归实现：递归时系统调用的是系统栈来存放递归中每一层的状态，因此递归实现DFS的本质还是栈。 例子1，0/1背包问题12345678910111213141516171819202122#include&amp;lt;cstdio&amp;gt;const int maxn=30;int n,V,maxValue=0; //">
 <meta name="keywords" content="常用算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DFS和BFS">
 <meta property="og:url" content="http://yoursite.com/2019/04/16/DFS和BFS/index.html">
 <meta property="og:site_name" content="Zay&#39;s Blog">
-<meta property="og:description" content="a singler who loves fucking code">
+<meta property="og:description" content="DFS深度优先搜索是一种枚举所有完整路径以遍历所有情况的搜索方法，可以使用栈或递归来实现。递归实现：递归时系统调用的是系统栈来存放递归中每一层的状态，因此递归实现DFS的本质还是栈。 例子1，0/1背包问题12345678910111213141516171819202122#include&amp;lt;cstdio&amp;gt;const int maxn=30;int n,V,maxValue=0; //">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-16T10:13:49.726Z">
+<meta property="og:updated_time" content="2019-04-16T11:45:22.404Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DFS和BFS">
-<meta name="twitter:description" content="a singler who loves fucking code">
+<meta name="twitter:description" content="DFS深度优先搜索是一种枚举所有完整路径以遍历所有情况的搜索方法，可以使用栈或递归来实现。递归实现：递归时系统调用的是系统栈来存放递归中每一层的状态，因此递归实现DFS的本质还是栈。 例子1，0/1背包问题12345678910111213141516171819202122#include&amp;lt;cstdio&amp;gt;const int maxn=30;int n,V,maxValue=0; //">
 
 
 
@@ -328,7 +328,7 @@
                 
               
 
-              <time title="创建时间：2019-04-16 18:12:16 / 修改时间：18:13:49" itemprop="dateCreated datePublished" datetime="2019-04-16T18:12:16+08:00">2019-04-16</time>
+              <time title="创建时间：2019-04-16 18:12:16 / 修改时间：19:45:22" itemprop="dateCreated datePublished" datetime="2019-04-16T18:12:16+08:00">2019-04-16</time>
             
 
             
@@ -366,7 +366,11 @@
       
 
       
-        
+        <h1 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h1><p>深度优先搜索是一种枚举所有完整路径以遍历所有情况的搜索方法，可以使用栈或递归来实现。<br><strong>递归实现</strong>：递归时系统调用的是系统栈来存放递归中每一层的状态，因此递归实现DFS的本质还是栈。</p>
+<h2 id="例子1，0-1背包问题"><a href="#例子1，0-1背包问题" class="headerlink" title="例子1，0/1背包问题"></a>例子1，0/1背包问题</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">30</span>;</span><br><span class="line"><span class="keyword">int</span> n,V,maxValue=<span class="number">0</span>; <span class="comment">//物品件数n，背包容量V，最大价值maxValue</span></span><br><span class="line"><span class="keyword">int</span> w[maxn],c[maxn]; <span class="comment">//w[i]为每件物品的重量，c[i]为每件物品的价值</span></span><br><span class="line"><span class="comment">//DFS,index为当前处理的物品编号，sumW和sumC分别为当前总重量和当前总价值</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> index,<span class="keyword">int</span> sumW,<span class="keyword">int</span> sumC)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(index == n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">//已经完成对n件物品的选择</span></span><br><span class="line">    &#125;</span><br><span class="line">    DFS(index+<span class="number">1</span>,sumW,sumC); <span class="comment">//不选第index件物品</span></span><br><span class="line">    <span class="comment">//只有加入第index件物品后未超过容量V，才能继续</span></span><br><span class="line">    <span class="keyword">if</span>(sumW+w[index] &lt;= V)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(sumC+c[index] &gt; maxValue)</span><br><span class="line">        &#123;</span><br><span class="line">            maxValue = sumC+c[index]; <span class="comment">//更新最大价值</span></span><br><span class="line">        &#125;</span><br><span class="line">        DFS(index+<span class="number">1</span>,sumW+w[index],sumC+c[index]); <span class="comment">//选第index件物品</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="例子2，枚举序列问题"><a href="#例子2，枚举序列问题" class="headerlink" title="例子2，枚举序列问题"></a>例子2，枚举序列问题</h2><p>枚举从N个整数中选择K个数的所有方案。<br>例如要求：序列A中n个数选k个数使得和为x，最大平方和为maxSumSqu。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n,k,x,maxSumSqu=<span class="number">-1</span>,A[maxn];</span><br><span class="line"><span class="comment">//temp存放临时方案，ans存放平方和最大方案</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; temp,ans;</span><br><span class="line"><span class="comment">//当前处理index号整数，当前已选整数个数为nowK</span></span><br><span class="line"><span class="comment">//当前已选整数之和为sum，当前已选整数平方和为sumSqu</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> index, <span class="keyword">int</span> nowK, <span class="keyword">int</span> sum, <span class="keyword">int</span> sumSqu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//找到k个数的和为x</span></span><br><span class="line">    <span class="keyword">if</span>(nowK == k &amp;&amp; sum == x)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//如果比当前找到的更优</span></span><br><span class="line">        <span class="keyword">if</span>(sumSqu &gt; maxSumSqu)</span><br><span class="line">        &#123;</span><br><span class="line">            maxSumSqu = sumSqu;</span><br><span class="line">            ans = temp; <span class="comment">//更新最大平方和，更新最优方案</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//已经处理完n个数，或者超过k个数，或者和超过x，返回</span></span><br><span class="line">    <span class="keyword">if</span>(index == n || nowK &gt; k || sum &gt; x) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//选index号数</span></span><br><span class="line">    temp.push_back(A[index]);</span><br><span class="line">    DFS(index+<span class="number">1</span>,nowK+<span class="number">1</span>,sum+A[index],sumSqu+A[index]*A[index]);</span><br><span class="line">    temp.pop_back(); <span class="comment">//结束分支，使其不会影响不选index号数这条分支</span></span><br><span class="line">    <span class="comment">//不选index号数</span></span><br><span class="line">    DFS(index+<span class="number">1</span>,nowK,sum,sumSqu);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>另有，如果修改题目为N个整数每个都可以被选择多次，那么只需要修改“选index号数”中的代码为<br><code>DFS(index, nowK+1, sum+A[index], sumSqu+A[index]*A[index])</code></p>
+
       
     </div>
 
@@ -456,8 +460,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -523,6 +536,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DFS"><span class="nav-number">1.</span> <span class="nav-text">DFS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#例子1，0-1背包问题"><span class="nav-number">1.1.</span> <span class="nav-text">例子1，0/1背包问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子2，枚举序列问题"><span class="nav-number">1.2.</span> <span class="nav-text">例子2，枚举序列问题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
