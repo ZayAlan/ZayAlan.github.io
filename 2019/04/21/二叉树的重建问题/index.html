@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Zay&#39;s Blog">
 <meta property="og:description" content="本文只讨论一个问题，若给出中序序列和层次序列，求构造相应的二叉树。参考资料为：https://blog.csdn.net/matrixdwy/article/details/3111808 各项数据结构表示设层次序列为：lev[7]={4,1,6,3,5,7,2}中序序列为：in[7]={1,2,3,4,5,6,7}还原的二叉树结点结构为:12345678910struct node&amp;#123;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-21T13:45:07.713Z">
+<meta property="og:updated_time" content="2019-04-21T13:46:54.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树的重建问题">
 <meta name="twitter:description" content="本文只讨论一个问题，若给出中序序列和层次序列，求构造相应的二叉树。参考资料为：https://blog.csdn.net/matrixdwy/article/details/3111808 各项数据结构表示设层次序列为：lev[7]={4,1,6,3,5,7,2}中序序列为：in[7]={1,2,3,4,5,6,7}还原的二叉树结点结构为:12345678910struct node&amp;#123;">
@@ -328,7 +328,7 @@
                 
               
 
-              <time title="创建时间：2019-04-21 21:21:15 / 修改时间：21:45:07" itemprop="dateCreated datePublished" datetime="2019-04-21T21:21:15+08:00">2019-04-21</time>
+              <time title="创建时间：2019-04-21 21:21:15 / 修改时间：21:46:54" itemprop="dateCreated datePublished" datetime="2019-04-21T21:21:15+08:00">2019-04-21</time>
             
 
             
@@ -378,9 +378,8 @@
 </ol>
 <ul>
 <li>先向tree的index2位置的左边查找，找第一个tree.data不为0的结点：<br>1) 找到，若该结点的右孩子为0，则设置该结点的右孩子为index2，break；否则进行下一步<br>2) 未找到，进行下一步</li>
-<li>向tree的index2位置的右边查找，找第一个tree.data不为0的结点:<br>1) 找到，若该结点的左孩子为0，则设置该结点的左孩子为index2，break；否则进行下一步<br>2) 未找到，进行下一步</li>
+<li>向tree的index2位置的右边查找，找第一个tree.data不为0的结点:<br>1) 找到，若该结点的左孩子为0，则设置该结点的左孩子为index2，break；否则进行下一步<br>2) 未找到，进行下一步<br>如果向左和向右都未找到，则index2位置为根结点位置，设置<code>int root=index2</code>，访问lev下一个结点，即index1++<br>如果找到，访问lev下一个结点，即index1++</li>
 </ul>
-<p>如果向左和向右都未找到，则index2位置为根结点位置，设置<code>int root=index2</code>，访问lev下一个结点，即index1++<br>如果找到，访问lev下一个结点，即index1++</p>
 <ol start="3">
 <li></li>
 </ol>
