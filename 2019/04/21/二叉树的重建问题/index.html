@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Zay&#39;s Blog">
 <meta property="og:description" content="本文只讨论一个问题，若给出中序序列和层次序列，求构造相应的二叉树。参考资料为：https://blog.csdn.net/matrixdwy/article/details/3111808 各项数据结构表示设层次序列为：lev[7]={4,1,6,3,5,7,2}中序序列为：in[7]={1,2,3,4,5,6,7}还原的二叉树结点结构为:12345678910struct node&amp;#123;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-21T13:46:54.944Z">
+<meta property="og:updated_time" content="2019-04-21T13:59:17.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树的重建问题">
 <meta name="twitter:description" content="本文只讨论一个问题，若给出中序序列和层次序列，求构造相应的二叉树。参考资料为：https://blog.csdn.net/matrixdwy/article/details/3111808 各项数据结构表示设层次序列为：lev[7]={4,1,6,3,5,7,2}中序序列为：in[7]={1,2,3,4,5,6,7}还原的二叉树结点结构为:12345678910struct node&amp;#123;">
@@ -328,7 +328,7 @@
                 
               
 
-              <time title="创建时间：2019-04-21 21:21:15 / 修改时间：21:46:54" itemprop="dateCreated datePublished" datetime="2019-04-21T21:21:15+08:00">2019-04-21</time>
+              <time title="创建时间：2019-04-21 21:21:15 / 修改时间：21:59:17" itemprop="dateCreated datePublished" datetime="2019-04-21T21:21:15+08:00">2019-04-21</time>
             
 
             
@@ -369,21 +369,51 @@
         <p>本文只讨论一个问题，<strong>若给出中序序列和层次序列，求构造相应的二叉树。</strong><br>参考资料为：<a href="https://blog.csdn.net/matrixdwy/article/details/3111808" target="_blank" rel="noopener">https://blog.csdn.net/matrixdwy/article/details/3111808</a></p>
 <h1 id="各项数据结构表示"><a href="#各项数据结构表示" class="headerlink" title="各项数据结构表示"></a>各项数据结构表示</h1><p>设层次序列为：<br><code>lev[7]={4,1,6,3,5,7,2}</code><br>中序序列为：<br><code>in[7]={1,2,3,4,5,6,7}</code><br>还原的二叉树结点结构为:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="keyword">int</span> lchild;</span><br><span class="line">    <span class="keyword">int</span> rchild;</span><br><span class="line">    node()</span><br><span class="line">    &#123;</span><br><span class="line">        data=lchild=rchild=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>二叉树存放的结构为：<br><code>node tree[7]</code></p>
-<h1 id="根据层次序列和中序序列重建二叉树过程"><a href="#根据层次序列和中序序列重建二叉树过程" class="headerlink" title="根据层次序列和中序序列重建二叉树过程"></a>根据层次序列和中序序列重建二叉树过程</h1><ol>
+<h1 id="根据层次序列和中序序列重建二叉树过程"><a href="#根据层次序列和中序序列重建二叉树过程" class="headerlink" title="根据层次序列和中序序列重建二叉树过程"></a>根据层次序列和中序序列重建二叉树过程</h1><p><strong>处理思路</strong><br>访问lev第一个结点，位置为index1<br>找到lev[index1]在in中对应的位置为index2后，设置tree[index2].data=lev[index1]。</p>
+<ul>
+<li>先向tree的index2位置的左边查找，找第一个tree.data不为0的结点：<br>1) 找到，若该结点的右孩子为0，则设置该结点的右孩子为index2，break；否则进行下一步<br>2) 未找到，进行下一步</li>
+<li>向tree的index2位置的右边查找，找第一个tree.data不为0的结点:<br>1) 找到，若该结点的左孩子为0，则设置该结点的左孩子为index2，break；否则进行下一步<br>2) 未找到，进行下一步<br>如果向左和向右都未找到，则index2位置为根结点位置，设置<code>int root=index2</code>，访问lev下一个结点，即index1++<br>如果找到，访问lev下一个结点，即index1++<br><strong>示例如下</strong></li>
+</ul>
+<ol>
 <li><p>初始情况</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lev         4  1  6  3  5  7  2</span><br><span class="line">in          1  2  3  4  5  6  7</span><br><span class="line">tree.data   0  0  0  0  0  0  0</span><br><span class="line">tree.lchild 0  0  0  0  0  0  0</span><br><span class="line">tree.rchild 0  0  0  0  0  0  0</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>访问lev第一个结点，位置为index1<br>找到lev[index1]在in中对应的位置为index2后，设置tree[index2].data=lev[index1]。</p>
+<li><p>访问lev第一个结点，index1=0，index2=3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lev        [4] 1  6  3  5  7  2</span><br><span class="line">in          1  2  3  4  5  6  7</span><br><span class="line">tree.data   0  0  0  4  0  0  0</span><br><span class="line">tree.lchild 0  0  0  0  0  0  0</span><br><span class="line">tree.rchild 0  0  0  0  0  0  0</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<ul>
-<li>先向tree的index2位置的左边查找，找第一个tree.data不为0的结点：<br>1) 找到，若该结点的右孩子为0，则设置该结点的右孩子为index2，break；否则进行下一步<br>2) 未找到，进行下一步</li>
-<li>向tree的index2位置的右边查找，找第一个tree.data不为0的结点:<br>1) 找到，若该结点的左孩子为0，则设置该结点的左孩子为index2，break；否则进行下一步<br>2) 未找到，进行下一步<br>如果向左和向右都未找到，则index2位置为根结点位置，设置<code>int root=index2</code>，访问lev下一个结点，即index1++<br>如果找到，访问lev下一个结点，即index1++</li>
-</ul>
+<p>此时向左和向右都为找到，root=index2=3;</p>
 <ol start="3">
-<li></li>
+<li>访问lev第二个结点，index1=1，index2=0<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lev         4 [1] 6  3  5  7  2</span><br><span class="line">in          1  2  3  4  5  6  7</span><br><span class="line">tree.data   1  0  0  4  0  0  0</span><br><span class="line">tree.lchild 0  0  0  1  0  0  0</span><br><span class="line">tree.rchild 0  0  0  0  0  0  0</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-
+<p>向右找到，设置tree.data=4的左孩子为1</p>
+<ol start="4">
+<li>访问lev第三个结点，index1=2，index2=5<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lev         4  1 [6] 3  5  7  2</span><br><span class="line">in          1  2  3  4  5  6  7</span><br><span class="line">tree.data   1  0  0  4  0  6  0</span><br><span class="line">tree.lchild 0  0  0  1  0  0  0</span><br><span class="line">tree.rchild 0  0  0  6  0  0  0</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>向左找到，设置tree.data=4的右孩子为6</p>
+<ol start="5">
+<li><p>访问lev第四个结点，index1=3，index2=2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lev         4  1  6 [3] 5  7  2</span><br><span class="line">in          1  2  3  4  5  6  7</span><br><span class="line">tree.data   1  0  3  4  0  6  0</span><br><span class="line">tree.lchild 0  0  0  1  0  0  0</span><br><span class="line">tree.rchild 3  0  0  6  0  0  0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问lev第五个结点，index1=4，index2=4</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lev         4  1  6  3 [5] 7  2</span><br><span class="line">in          1  2  3  4  5  6  7</span><br><span class="line">tree.data   1  0  3  4  5  6  0</span><br><span class="line">tree.lchild 0  0  0  1  0  5  0</span><br><span class="line">tree.rchild 3  0  0  6  0  0  0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问lev第六个结点，index1=5，index2=6</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lev         4  1  6  3  5 [7] 2</span><br><span class="line">in          1  2  3  4  5  6  7</span><br><span class="line">tree.data   1  0  3  4  5  6  7</span><br><span class="line">tree.lchild 0  0  0  1  0  5  0</span><br><span class="line">tree.rchild 3  0  0  6  0  7  0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问lev第七个结点，index1=6，index2=1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lev         4  1  6  3  5 [7] 2</span><br><span class="line">in          1  2  3  4  5  6  7</span><br><span class="line">tree.data   1  2  3  4  5  6  7</span><br><span class="line">tree.lchild 0  0  0  1  0  5  0</span><br><span class="line">tree.rchild 3  0  2  6  0  7  0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构建得到的二叉树如下</p>
+<pre><code>4
+</code></pre><p> 1           6</p>
+<pre><code>3      5    7
+  2
+</code></pre></li>
+</ol>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -559,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#各项数据结构表示"><span class="nav-number">1.</span> <span class="nav-text">各项数据结构表示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据层次序列和中序序列重建二叉树过程"><span class="nav-number">2.</span> <span class="nav-text">根据层次序列和中序序列重建二叉树过程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#各项数据结构表示"><span class="nav-number">1.</span> <span class="nav-text">各项数据结构表示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据层次序列和中序序列重建二叉树过程"><span class="nav-number">2.</span> <span class="nav-text">根据层次序列和中序序列重建二叉树过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
             
 
           </div>
