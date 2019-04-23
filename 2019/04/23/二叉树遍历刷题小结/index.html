@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="最大公约数欧几里得算法（辗转相除法）基于如下定理：设a、b均为正整数，则gcd(a,b)=gcd(b,a%b)12345int gcd(int a, int b)&amp;#123;    if(b==0) return a;    else return gcd(b, a%b);&amp;#125; 最小公倍数当得到a和b的最大公约数d之后，可以马上得到a和b的最小公倍数是ab/d由于ab在实际计算时有可能溢出">
-<meta name="keywords" content="常用算法">
+  <meta name="description" content="二叉树的静态写法中找根结点，只需要找到一个结点，它不是任何结点的孩子即可。 scanf的%c格式可以读入换行符，因此有时候需要在每行输入前把上一行的换行符接收（可用getchar）。 针对上一条的情况，可以用scanf(“%*c”)，这样指定了scanf中接收一个字符。 为实现输出的格式问题，可以自行重写print函数(以下代码为本题所重写的函数，针对不同情况可以有不同的重写方法，这里只是提供一">
+<meta name="keywords" content="刷题总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最大公约数和最小公倍数">
-<meta property="og:url" content="http://yoursite.com/2019/04/10/最大公约数和最小公倍数/index.html">
+<meta property="og:title" content="二叉树遍历刷题小结">
+<meta property="og:url" content="http://yoursite.com/2019/04/23/二叉树遍历刷题小结/index.html">
 <meta property="og:site_name" content="Zay&#39;s Blog">
-<meta property="og:description" content="最大公约数欧几里得算法（辗转相除法）基于如下定理：设a、b均为正整数，则gcd(a,b)=gcd(b,a%b)12345int gcd(int a, int b)&amp;#123;    if(b==0) return a;    else return gcd(b, a%b);&amp;#125; 最小公倍数当得到a和b的最大公约数d之后，可以马上得到a和b的最小公倍数是ab/d由于ab在实际计算时有可能溢出">
+<meta property="og:description" content="二叉树的静态写法中找根结点，只需要找到一个结点，它不是任何结点的孩子即可。 scanf的%c格式可以读入换行符，因此有时候需要在每行输入前把上一行的换行符接收（可用getchar）。 针对上一条的情况，可以用scanf(“%*c”)，这样指定了scanf中接收一个字符。 为实现输出的格式问题，可以自行重写print函数(以下代码为本题所重写的函数，针对不同情况可以有不同的重写方法，这里只是提供一">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-10T12:52:25.349Z">
+<meta property="og:updated_time" content="2019-04-23T13:08:35.722Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="最大公约数和最小公倍数">
-<meta name="twitter:description" content="最大公约数欧几里得算法（辗转相除法）基于如下定理：设a、b均为正整数，则gcd(a,b)=gcd(b,a%b)12345int gcd(int a, int b)&amp;#123;    if(b==0) return a;    else return gcd(b, a%b);&amp;#125; 最小公倍数当得到a和b的最大公约数d之后，可以马上得到a和b的最小公倍数是ab/d由于ab在实际计算时有可能溢出">
+<meta name="twitter:title" content="二叉树遍历刷题小结">
+<meta name="twitter:description" content="二叉树的静态写法中找根结点，只需要找到一个结点，它不是任何结点的孩子即可。 scanf的%c格式可以读入换行符，因此有时候需要在每行输入前把上一行的换行符接收（可用getchar）。 针对上一条的情况，可以用scanf(“%*c”)，这样指定了scanf中接收一个字符。 为实现输出的格式问题，可以自行重写print函数(以下代码为本题所重写的函数，针对不同情况可以有不同的重写方法，这里只是提供一">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/10/最大公约数和最小公倍数/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/04/23/二叉树遍历刷题小结/"/>
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>最大公约数和最小公倍数 | Zay's Blog</title>
+  <title>二叉树遍历刷题小结 | Zay's Blog</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/10/最大公约数和最小公倍数/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/23/二叉树遍历刷题小结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zay Alan">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">最大公约数和最小公倍数
+          <h1 class="post-title" itemprop="name headline">二叉树遍历刷题小结
               
             
           </h1>
@@ -328,7 +328,7 @@
                 
               
 
-              <time title="创建时间：2019-04-10 20:42:22 / 修改时间：20:52:25" itemprop="dateCreated datePublished" datetime="2019-04-10T20:42:22+08:00">2019-04-10</time>
+              <time title="创建时间：2019-04-23 20:58:30 / 修改时间：21:08:35" itemprop="dateCreated datePublished" datetime="2019-04-23T20:58:30+08:00">2019-04-23</time>
             
 
             
@@ -366,8 +366,13 @@
       
 
       
-        <h1 id="最大公约数"><a href="#最大公约数" class="headerlink" title="最大公约数"></a>最大公约数</h1><p>欧几里得算法（辗转相除法）基于如下定理：<br><strong>设a、b均为正整数，则gcd(a,b)=gcd(b,a%b)</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> gcd(b, a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="最小公倍数"><a href="#最小公倍数" class="headerlink" title="最小公倍数"></a>最小公倍数</h1><p>当得到a和b的最大公约数d之后，可以马上得到a和b的最小公倍数是ab/d<br><strong>由于ab在实际计算时有可能溢出，因此更恰当的写法是a/d*b，因为d是a和b的最大公约数，所以a/d一定可以整除</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lcm</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a/gcd(a,b)*b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <ol>
+<li>二叉树的静态写法中找根结点，只需要找到一个结点，它不是任何结点的孩子即可。</li>
+<li>scanf的%c格式可以读入换行符，因此有时候需要在每行输入前把上一行的换行符接收（可用getchar）。</li>
+<li>针对上一条的情况，可以用scanf(“%*c”)，这样指定了scanf中接收一个字符。</li>
+<li>为实现输出的格式问题，可以自行重写print函数(以下代码为本题所重写的函数，针对不同情况可以有不同的重写方法，这里只是提供一种思路)<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> id)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,id);</span><br><span class="line">    num++;</span><br><span class="line">    <span class="keyword">if</span>(num&lt;n) <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//每次完全输出之后需要进行num=0归零操作。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
       
     </div>
@@ -388,7 +393,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/常用算法/" rel="tag"><i class="fa fa-tag"></i> 常用算法</a>
+            <a href="/tags/刷题总结/" rel="tag"><i class="fa fa-tag"></i> 刷题总结</a>
           
         </div>
       
@@ -401,8 +406,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/10/数学问题/" rel="next" title="数学问题">
-                <i class="fa fa-chevron-left"></i> 数学问题
+              <a href="/2019/04/21/二叉树的重建问题/" rel="next" title="二叉树的重建问题">
+                <i class="fa fa-chevron-left"></i> 二叉树的重建问题
               </a>
             
           </div>
@@ -410,10 +415,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/10/素数判断/" rel="prev" title="素数判断">
-                素数判断 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -462,17 +463,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -538,22 +530,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最大公约数"><span class="nav-number">1.</span> <span class="nav-text">最大公约数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最小公倍数"><span class="nav-number">2.</span> <span class="nav-text">最小公倍数</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
