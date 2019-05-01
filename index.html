@@ -331,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2019-05-01 18:44:29 / 修改时间：21:35:47" itemprop="dateCreated datePublished" datetime="2019-05-01T18:44:29+08:00">2019-05-01</time>
+              <time title="创建时间：2019-05-01 18:44:29 / 修改时间：21:37:55" itemprop="dateCreated datePublished" datetime="2019-05-01T18:44:29+08:00">2019-05-01</time>
             
 
             
@@ -376,6 +376,27 @@
 <h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>左旋：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">L</span><span class="params">(node* &amp;root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    node* temp = root-&gt;rchild;</span><br><span class="line">    root-&gt;rchild = temp-&gt;lchild;</span><br><span class="line">    temp-&gt;lchild = root;</span><br><span class="line">    updateHeight(root);</span><br><span class="line">    updateHeight(temp);</span><br><span class="line">    root = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>右旋：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">R</span><span class="params">(node* &amp;root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    node* temp = root-&gt;lchild;</span><br><span class="line">    root-&gt;lchild = temp-&gt;rchild;</span><br><span class="line">    temp-&gt;rchild = root;</span><br><span class="line">    updateHeight(root);</span><br><span class="line">    updateHeight(temp);</span><br><span class="line">    root = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>只要把最靠近插入结点的失衡结点调整到正常，路径上的所有结点就都会平衡。<br>最靠近插入结点的失衡结点的平衡因子只可能是2或者-2，这两种情况完全对称，因此下面主要讨论平衡因子是2的情形。<br>| 树型 | 判定条件 | 调整方法 |<br>| :—-: | :——: | :——–: |<br>| LL | BF(root)=2,BF(root-&gt;lchild)=1 | 对root进行右旋 |<br>| LR | BF(root)=2,BF(root-&gt;lchild)=-1 | 先对root-&gt;lchild进行左旋，再对root进行右旋 |<br>| RR | BF(root)=-2,BF(root-&gt;rchild)=-1 | 对root进行左旋 |<br>| RL | BF(root)=-2,BF(root-&gt;rchild)=1 | 先对root-&gt;rchild进行右旋，再对root进行左旋 |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">左对齐</th>
+<th style="text-align:right">右对齐</th>
+<th style="text-align:center">居中对齐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">单元格</td>
+<td style="text-align:right">单元格</td>
+<td style="text-align:center">单元格</td>
+</tr>
+<tr>
+<td style="text-align:left">单元格</td>
+<td style="text-align:right">单元格</td>
+<td style="text-align:center">单元格</td>
+</tr>
+</tbody>
+</table>
 
           
         
