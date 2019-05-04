@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="A1049.Counting Ones这题有意思，在选取测试数据上给自己提个醒，有时间多回顾一下。 Rational Sum本题要求实现多个分数的加法，并将结果以带分数的形式展示，没找到错在哪。。。先放上来以后再debug吧1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484">
-<meta name="keywords" content="刷题总结">
+  <meta name="description" content="并查集定义 合并：合并两个集合 查找：判断两个元素是否在一个集合  并查集用一个数组int father[N];来实现的，father[i]表示元素i的父亲结点，如果father[i]==i说明元素i是该集合的根结点，对于同一个集合来说只存在一个根结点，且将其作为所属集合的标识。 初始化1234for(int i=1;i&amp;lt;=N;i++)&amp;#123;    father[i]=i;&amp;#125;">
+<meta name="keywords" content="常用算法,刷题总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数学问题">
-<meta property="og:url" content="http://yoursite.com/2019/04/10/数学问题/index.html">
+<meta property="og:title" content="并查集">
+<meta property="og:url" content="http://yoursite.com/2019/05/03/并查集/index.html">
 <meta property="og:site_name" content="Zay&#39;s Blog">
-<meta property="og:description" content="A1049.Counting Ones这题有意思，在选取测试数据上给自己提个醒，有时间多回顾一下。 Rational Sum本题要求实现多个分数的加法，并将结果以带分数的形式展示，没找到错在哪。。。先放上来以后再debug吧1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484">
+<meta property="og:description" content="并查集定义 合并：合并两个集合 查找：判断两个元素是否在一个集合  并查集用一个数组int father[N];来实现的，father[i]表示元素i的父亲结点，如果father[i]==i说明元素i是该集合的根结点，对于同一个集合来说只存在一个根结点，且将其作为所属集合的标识。 初始化1234for(int i=1;i&amp;lt;=N;i++)&amp;#123;    father[i]=i;&amp;#125;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-13T11:54:44.123Z">
+<meta property="og:updated_time" content="2019-05-03T13:36:56.951Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数学问题">
-<meta name="twitter:description" content="A1049.Counting Ones这题有意思，在选取测试数据上给自己提个醒，有时间多回顾一下。 Rational Sum本题要求实现多个分数的加法，并将结果以带分数的形式展示，没找到错在哪。。。先放上来以后再debug吧1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484">
+<meta name="twitter:title" content="并查集">
+<meta name="twitter:description" content="并查集定义 合并：合并两个集合 查找：判断两个元素是否在一个集合  并查集用一个数组int father[N];来实现的，father[i]表示元素i的父亲结点，如果father[i]==i说明元素i是该集合的根结点，对于同一个集合来说只存在一个根结点，且将其作为所属集合的标识。 初始化1234for(int i=1;i&amp;lt;=N;i++)&amp;#123;    father[i]=i;&amp;#125;">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/10/数学问题/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/05/03/并查集/"/>
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>数学问题 | Zay's Blog</title>
+  <title>并查集 | Zay's Blog</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/10/数学问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/03/并查集/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zay Alan">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数学问题
+          <h1 class="post-title" itemprop="name headline">并查集
               
             
           </h1>
@@ -328,24 +328,12 @@
                 
               
 
-              <time title="创建时间：2019-04-10 20:00:05" itemprop="dateCreated datePublished" datetime="2019-04-10T20:00:05+08:00">2019-04-10</time>
+              <time title="创建时间：2019-05-03 20:38:34 / 修改时间：21:36:56" itemprop="dateCreated datePublished" datetime="2019-05-03T20:38:34+08:00">2019-05-03</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-13 19:54:44" itemprop="dateModified" datetime="2019-04-13T19:54:44+08:00">2019-04-13</time>
               
             
           </span>
@@ -378,9 +366,16 @@
       
 
       
-        <h1 id="A1049-Counting-Ones"><a href="#A1049-Counting-Ones" class="headerlink" title="A1049.Counting Ones"></a>A1049.Counting Ones</h1><p>这题有意思，在选取测试数据上给自己提个醒，有时间多回顾一下。</p>
-<h1 id="Rational-Sum"><a href="#Rational-Sum" class="headerlink" title="Rational Sum"></a>Rational Sum</h1><p>本题要求实现多个分数的加法，并将结果以带分数的形式展示，没找到错在哪。。。先放上来以后再debug吧<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Num</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> d;</span><br><span class="line">&#125;num[<span class="number">110</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">gcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a, <span class="keyword">long</span> <span class="keyword">long</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> gcd(b, a%b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> lcmNum;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d/%d"</span>,&amp;num[i].n,&amp;num[i].d);</span><br><span class="line">    &#125;</span><br><span class="line">    Num result=num[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        result.n=result.n*num[i].d+num[i].n*result.d;</span><br><span class="line">        result.d=result.d*num[i].d;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> gcdNum=gcd(result.n,result.d);</span><br><span class="line">    result.n/=gcdNum;</span><br><span class="line">    result.d/=gcdNum;</span><br><span class="line">    <span class="keyword">int</span> more=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(result.n&gt;result.d)</span><br><span class="line">    &#123;</span><br><span class="line">        more=result.n/result.d;</span><br><span class="line">        result.n=result.n%result.d;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d/%d"</span>,more,result.n,result.d);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d/%d"</span>,result.n,result.d);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="Consecutive-Factors"><a href="#Consecutive-Factors" class="headerlink" title="Consecutive Factors"></a>Consecutive Factors</h1><p>策略：由于N不会被除自己以外的大于根号N的整数整除，因此只需要从2~根号N遍历连续整数的第一个，求此时N能被最多多少个连续整数的乘积整除。</p>
+        <h1 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ol>
+<li>合并：合并两个集合</li>
+<li>查找：判断两个元素是否在一个集合</li>
+</ol>
+<p>并查集用一个数组<code>int father[N];</code>来实现的，<code>father[i]</code>表示元素i的父亲结点，如果<code>father[i]==i</code>说明元素i是该集合的根结点，对于同一个集合来说只存在一个根结点，且将其作为所属集合的标识。</p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;i++)</span><br><span class="line">&#123;</span><br><span class="line">    father[i]=i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>查找操作是对给定的结点寻找其根结点的过程。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递推方法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findFather</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(x != father[x])</span><br><span class="line">    &#123;</span><br><span class="line">        x = father[x];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//递归方法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findFather</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x == father[x]) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> findFather(father[x]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><p>一般先判断两个元素是否属于同一个集合，只有当两个元素属于不同的集合时才合并，而合并的过程一般是把其中一个集合的根结点的父亲指向另一个集合的根结点。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Union</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> faA = findFather(a);</span><br><span class="line">    <span class="keyword">int</span> faB = findFather(b);</span><br><span class="line">    <span class="keyword">if</span>(faA != faB)</span><br><span class="line">    &#123;</span><br><span class="line">        father[faA] = faB;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩"></a>路径压缩</h1><p>优化并查集的查询操作<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findFather</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = x;</span><br><span class="line">    <span class="keyword">while</span>(x != father[x])</span><br><span class="line">    &#123;</span><br><span class="line">        x = father[x];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(a != father[a])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> z = a;</span><br><span class="line">        a = father[a];</span><br><span class="line">        father[z] = x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//递归写法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findFather</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x == father[x]) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> a = findFather(x);</span><br><span class="line">        father[x] = a;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a>刷题总结</h1><p>isRoot[]处理集合个数和大小问题。</p>
 
       
     </div>
@@ -401,6 +396,8 @@
       
         <div class="post-tags">
           
+            <a href="/tags/常用算法/" rel="tag"><i class="fa fa-tag"></i> 常用算法</a>
+          
             <a href="/tags/刷题总结/" rel="tag"><i class="fa fa-tag"></i> 刷题总结</a>
           
         </div>
@@ -414,8 +411,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/04/lower-bound和upper-bound/" rel="next" title="lower_bound和upper_bound">
-                <i class="fa fa-chevron-left"></i> lower_bound和upper_bound
+              <a href="/2019/05/01/平衡二叉树/" rel="next" title="平衡二叉树">
+                <i class="fa fa-chevron-left"></i> 平衡二叉树
               </a>
             
           </div>
@@ -424,8 +421,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/10/最大公约数和最小公倍数/" rel="prev" title="最大公约数和最小公倍数">
-                最大公约数和最小公倍数 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/04/哈夫曼树/" rel="prev" title="哈夫曼树">
+                哈夫曼树 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -561,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A1049-Counting-Ones"><span class="nav-number">1.</span> <span class="nav-text">A1049.Counting Ones</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Rational-Sum"><span class="nav-number">2.</span> <span class="nav-text">Rational Sum</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Consecutive-Factors"><span class="nav-number">3.</span> <span class="nav-text">Consecutive Factors</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#并查集"><span class="nav-number">1.</span> <span class="nav-text">并查集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-number">1.2.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找"><span class="nav-number">1.3.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并"><span class="nav-number">1.4.</span> <span class="nav-text">合并</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路径压缩"><span class="nav-number">2.</span> <span class="nav-text">路径压缩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#刷题总结"><span class="nav-number">3.</span> <span class="nav-text">刷题总结</span></a></li></ol></div>
             
 
           </div>
