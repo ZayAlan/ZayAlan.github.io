@@ -285,6 +285,303 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/24/关键路径/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zay Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/05/13/5af7c36518aa2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zay's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/24/关键路径/" itemprop="url">
+                  关键路径
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-24 19:05:02 / 修改时间：21:12:14" itemprop="dateCreated datePublished" datetime="2019-05-24T19:05:02+08:00">2019-05-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="AOV网和AOE网"><a href="#AOV网和AOE网" class="headerlink" title="AOV网和AOE网"></a>AOV网和AOE网</h1><p>AOV网（顶点活动网）是指用顶点表示活动，而用边集表示活动间优先关系的有向图。<br>AOE网（边活动网）是指用带权的边集表示活动，而用顶点表示事件的有向图，其中边权表示完成活动需要的时间。<br>AOE网中的最长路径被称为关键路径（<strong>关键路径就是AOE网的最长路径</strong>），其长度会等于整个工程的最短完成时间，而把关键路径上的活动称为<strong>关键活动</strong>，关键活动会影响整个工程的进度。</p>
+<h1 id="关键路径"><a href="#关键路径" class="headerlink" title="关键路径"></a>关键路径</h1><p>即求解有向无环图（DAG）中最长路径的方法。<br>思路：</p>
+<ol>
+<li>按拓扑序和逆拓扑序分别计算各顶点（事件）的最早发生时间和最迟发生时间：<br>最早（拓扑序）：ve[j]=max{ve[i]+length[i-&gt;j]};<br>最迟（逆拓扑序）：vl[i] = min{vl[j]-length[i-&gt;j]};</li>
+<li>用上面的结果计算各边（活动）的最早开始时间和最迟开始时间：<br>最早：e[i-&gt;j]=ve[i]<br>最迟：l[i-&gt;j]=vl[j]-length[i-&gt;j]</li>
+<li>e[i-&gt;j]=l[i-&gt;j]的活动即为关键活动。</li>
+</ol>
+<p>代码如下（适用汇点确定且唯一的情况，以n-1号顶点为汇点为例）：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; topOrder;  <span class="comment">//拓扑序列</span></span><br><span class="line"><span class="comment">//拓扑排序，顺便求ve数组</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">topologicalSort</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(inDegree[i] == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            q.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u=q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        topOrder.push(u);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G[u].size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> v=G[u][i].v;</span><br><span class="line">            inDegree[v]--;</span><br><span class="line">            <span class="keyword">if</span>(inDegree[v]==<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                q.push(v);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//用ve[u]来更新u的所有后继结点v</span></span><br><span class="line">            <span class="keyword">if</span>(ve[u]+G[u][i].w &gt; ve[v])</span><br><span class="line">            &#123;</span><br><span class="line">                ve[v]=ve[u]+G[u][i].w;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(topOrder.size() == n) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//关键路径，不是有向无环图返回-1，否则返回关键路径长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CriticalPath</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    fill(ve,ve+n,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(topologicalSort()==<span class="literal">false</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    fill(vl,vl+n,ve[n<span class="number">-1</span>]);</span><br><span class="line">    <span class="comment">//直接使用topOrder出栈即为逆拓扑序列，求解vl数组</span></span><br><span class="line">    <span class="keyword">while</span>(!topOrder.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u= topOrder.top();</span><br><span class="line">        topOrder.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G[u].size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> v = G[u][i].v;</span><br><span class="line">            <span class="keyword">if</span>(vl[v]-G[u][i].w &lt; vl[u])</span><br><span class="line">            &#123;</span><br><span class="line">                vl[u]=vl[v]-G[u][i].w;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//遍历邻接表的所有边，计算活动的最早开始时间e和最迟开始时间l</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> u=<span class="number">0</span>;u&lt;n;u++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G[u].size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> v = G[u][i].v, w=G[u][i].w;</span><br><span class="line">            <span class="comment">//活动的最早开始时间e和最迟开始时间l</span></span><br><span class="line">            <span class="keyword">int</span> e=ve[u], l=vl[v]-w;</span><br><span class="line">            <span class="comment">//如果e==l，说明活动u-&gt;v是关键活动</span></span><br><span class="line">            <span class="keyword">if</span>(e==l)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d-&gt;%d\n"</span>, u, v);  <span class="comment">//输出关键活动</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ve[n<span class="number">-1</span>];  <span class="comment">//返回关键路径长度</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>如果事先不知道汇点编号，可以通过取ve数组的最大值来获得。于是只需要在fill函数之前添加如下语句，然后改变vl数组初始值即可。</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> maxLength=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(ve[i]&gt;maxLength)</span><br><span class="line">    &#123;</span><br><span class="line">        maxLength = ve[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">fill(vl,vl+n, maxLength);</span><br></pre></td></tr></table></figure></p>
+<p>最后，使用动态规划的方法可以更简洁的求解关键路径。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/24/拓扑排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zay Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/05/13/5af7c36518aa2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zay's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/24/拓扑排序/" itemprop="url">
+                  拓扑排序
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-24 18:24:27 / 修改时间：19:04:48" itemprop="dateCreated datePublished" datetime="2019-05-24T18:24:27+08:00">2019-05-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p><strong>有向无环图（DAG）</strong>是指一个有向图的任意顶点都无法通过一些有向边回到自身。<br><strong>拓扑排序</strong>是将有向无环图G的所有顶点排成一个线性序列，使得对图G中的任意两个顶点u、v，如果存在边u-&gt;v，那么在序列中u一定在v前面。这个序列又被称为拓扑序列。</p>
+<h1 id="拓扑序列求法"><a href="#拓扑序列求法" class="headerlink" title="拓扑序列求法"></a>拓扑序列求法</h1><p>思路：</p>
+<ol>
+<li>定义一个队列Q，并把所有入度为0的结点加入队列。</li>
+<li>取队首结点，输出。然后删去所有从它出发的边，并令这些边到达的顶点的入度减1，如果某个顶点的入度减为0，则将其加入队列。</li>
+<li>反复进行2，直到队列为空。如果队列为空时入过队的结点数目恰好为N，说明拓扑排序成功，图G为有向无环图，否则拓扑排序失败，图G中有环。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[maxn];</span><br><span class="line"><span class="keyword">int</span> n,inDegree[maxn]; <span class="comment">//顶点数，入度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">topologicalSort</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num=<span class="number">0</span>;  <span class="comment">//记录加入拓扑序列的顶点数</span></span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(inDegree[i]==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            q.push(i)；</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G[u].size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> v = G[u][i];</span><br><span class="line">            inDegree[v]--;</span><br><span class="line">            <span class="keyword">if</span>(inDegree[v]==<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                q.push(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        G[u].clear();  <span class="comment">//选择性写</span></span><br><span class="line">        num++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(num==n) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ps:如果要求有多个入度为0的顶点，选择编号最小的顶点，则把queue改成priority_queue，保持队首是最小元素即可（也可用set）。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/22/最小生成树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1480,331 +1777,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/03/并查集/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zay Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i.loli.net/2018/05/13/5af7c36518aa2.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zay's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/03/并查集/" itemprop="url">
-                  并查集
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-03 20:38:34 / 修改时间：21:36:56" itemprop="dateCreated datePublished" datetime="2019-05-03T20:38:34+08:00">2019-05-03</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ol>
-<li>合并：合并两个集合</li>
-<li>查找：判断两个元素是否在一个集合</li>
-</ol>
-<p>并查集用一个数组<code>int father[N];</code>来实现的，<code>father[i]</code>表示元素i的父亲结点，如果<code>father[i]==i</code>说明元素i是该集合的根结点，对于同一个集合来说只存在一个根结点，且将其作为所属集合的标识。</p>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;i++)</span><br><span class="line">&#123;</span><br><span class="line">    father[i]=i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>查找操作是对给定的结点寻找其根结点的过程。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递推方法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findFather</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(x != father[x])</span><br><span class="line">    &#123;</span><br><span class="line">        x = father[x];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//递归方法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findFather</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x == father[x]) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> findFather(father[x]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><p>一般先判断两个元素是否属于同一个集合，只有当两个元素属于不同的集合时才合并，而合并的过程一般是把其中一个集合的根结点的父亲指向另一个集合的根结点。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Union</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> faA = findFather(a);</span><br><span class="line">    <span class="keyword">int</span> faB = findFather(b);</span><br><span class="line">    <span class="keyword">if</span>(faA != faB)</span><br><span class="line">    &#123;</span><br><span class="line">        father[faA] = faB;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩"></a>路径压缩</h1><p>优化并查集的查询操作<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findFather</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = x;</span><br><span class="line">    <span class="keyword">while</span>(x != father[x])</span><br><span class="line">    &#123;</span><br><span class="line">        x = father[x];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(a != father[a])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> z = a;</span><br><span class="line">        a = father[a];</span><br><span class="line">        father[z] = x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//递归写法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findFather</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x == father[x]) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> a = findFather(x);</span><br><span class="line">        father[x] = a;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a>刷题总结</h1><p>isRoot[]处理集合个数和大小问题。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/01/平衡二叉树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zay Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i.loli.net/2018/05/13/5af7c36518aa2.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zay's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/01/平衡二叉树/" itemprop="url">
-                  平衡二叉树
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-01 18:44:29 / 修改时间：21:55:14" itemprop="dateCreated datePublished" datetime="2019-05-01T18:44:29+08:00">2019-05-01</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>AVL树仍然是一棵二叉查找树，只是增加了平衡的要求，即对AVL树的任意结点来说，其左子树和右子树的高度之差的绝对值不超过1，其中左子树和右子树的高度之差称为该结点的平衡因子。只要保证每个结点平衡因子的绝对值不超过1就行，于是在结点的结构中加入一个height变量，用来记录以当前结点为根结点的子树的高度。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> v, height;</span><br><span class="line">    node *lchild,*rchild;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">node* <span class="title">newNode</span><span class="params">(<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    node* Node = <span class="keyword">new</span> node;</span><br><span class="line">    Node-&gt;v = v;</span><br><span class="line">    Node-&gt;height=<span class="number">1</span>;</span><br><span class="line">    Node-&gt;lchild=Node-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> Node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getHeight</span><span class="params">(node* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> root-&gt;height;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getBalanceFactor</span><span class="params">(node* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> getHeight(root-&gt;rchild)-getHeight(root-&gt;lchild);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">updateHeight</span><span class="params">(node* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    root-&gt;height=max(getHeight(root-&gt;rchild),getHeight(root-&gt;lchild))+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">search</span><span class="params">(node* root, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"search failed\n"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x==root-&gt;data)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,root-&gt;data);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x&gt;root-&gt;data)</span><br><span class="line">    &#123;</span><br><span class="line">        search(root-&gt;rchild,x);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        search(root-&gt;lchild,x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>左旋：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">L</span><span class="params">(node* &amp;root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    node* temp = root-&gt;rchild;</span><br><span class="line">    root-&gt;rchild = temp-&gt;lchild;</span><br><span class="line">    temp-&gt;lchild = root;</span><br><span class="line">    updateHeight(root);</span><br><span class="line">    updateHeight(temp);</span><br><span class="line">    root = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>右旋：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">R</span><span class="params">(node* &amp;root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    node* temp = root-&gt;lchild;</span><br><span class="line">    root-&gt;lchild = temp-&gt;rchild;</span><br><span class="line">    temp-&gt;rchild = root;</span><br><span class="line">    updateHeight(root);</span><br><span class="line">    updateHeight(temp);</span><br><span class="line">    root = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>只要把最靠近插入结点的失衡结点调整到正常，路径上的所有结点就都会平衡。<br>最靠近插入结点的失衡结点的平衡因子只可能是2或者-2，这两种情况完全对称，因此下面主要讨论平衡因子是2的情形。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">树型</th>
-<th style="text-align:center">判定条件</th>
-<th style="text-align:center">调整方法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">LL</td>
-<td style="text-align:center">BF(root)=2,BF(root-&gt;lchild)=1</td>
-<td style="text-align:center">对root进行右旋</td>
-</tr>
-<tr>
-<td style="text-align:center">LR</td>
-<td style="text-align:center">BF(root)=2,BF(root-&gt;lchild)=-1</td>
-<td style="text-align:center">先对root-&gt;lchild进行左旋，再对root进行右旋</td>
-</tr>
-<tr>
-<td style="text-align:center">RR</td>
-<td style="text-align:center">BF(root)=-2,BF(root-&gt;rchild)=-1</td>
-<td style="text-align:center">对root进行左旋</td>
-</tr>
-<tr>
-<td style="text-align:center">RL</td>
-<td style="text-align:center">BF(root)=-2,BF(root-&gt;rchild)=1</td>
-<td style="text-align:center">先对root-&gt;rchild进行右旋，再对root进行左旋</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(node* &amp;root, <span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        root = newNode(v);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(v &lt; root-&gt;v)</span><br><span class="line">    &#123;</span><br><span class="line">        insert(root-&gt;lchild,v);</span><br><span class="line">        updateHeight(root);</span><br><span class="line">        <span class="keyword">if</span>(getBalanceFactor(root) == <span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(getBalanceFactor(root-&gt;lchild) == <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                R(root);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(getBalanceFactor(root-&gt;lchild) == <span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                L(root-&gt;lchild);</span><br><span class="line">                R(root);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        insert(root-&gt;rchild,v);</span><br><span class="line">        updateHeight(root);</span><br><span class="line">        <span class="keyword">if</span>(getBalanceFactor(root) == <span class="number">-2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(getBalanceFactor(root-&gt;rchild) == <span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                L(root);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(getBalanceFactor(root-&gt;rchild) == <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                R(root-&gt;rchild);</span><br><span class="line">                L(root);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="建立"><a href="#建立" class="headerlink" title="建立"></a>建立</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">node* <span class="title">Create</span><span class="params">(<span class="keyword">int</span> data[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    node* root = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        insert(root,data[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1856,7 +1828,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

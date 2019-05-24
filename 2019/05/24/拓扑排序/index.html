@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="字符数组的输入输出 scanf和printf getchar和putchar用来输入和输出单个字符 gets:用来输入一行字符串，识别\n作为输入结束，并将其存放于一维数组中puts:用来输出一行字符串，并紧跟一个换行符。  gets可以接收空格，scanf遇到空格、回车和Tab键都会认为输入结束，所以它不能接收空格。 string.h头文件 strlen(str)得到字符数组中第一个\0前的字符">
-<meta name="keywords" content="C++基础知识">
+  <meta name="description" content="概念有向无环图（DAG）是指一个有向图的任意顶点都无法通过一些有向边回到自身。拓扑排序是将有向无环图G的所有顶点排成一个线性序列，使得对图G中的任意两个顶点u、v，如果存在边u-&amp;gt;v，那么在序列中u一定在v前面。这个序列又被称为拓扑序列。 拓扑序列求法思路：  定义一个队列Q，并把所有入度为0的结点加入队列。 取队首结点，输出。然后删去所有从它出发的边，并令这些边到达的顶点的入度减1，如果某">
+<meta name="keywords" content="常用算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="字符串处理">
-<meta property="og:url" content="http://yoursite.com/2019/03/29/字符串处理/index.html">
+<meta property="og:title" content="拓扑排序">
+<meta property="og:url" content="http://yoursite.com/2019/05/24/拓扑排序/index.html">
 <meta property="og:site_name" content="Zay&#39;s Blog">
-<meta property="og:description" content="字符数组的输入输出 scanf和printf getchar和putchar用来输入和输出单个字符 gets:用来输入一行字符串，识别\n作为输入结束，并将其存放于一维数组中puts:用来输出一行字符串，并紧跟一个换行符。  gets可以接收空格，scanf遇到空格、回车和Tab键都会认为输入结束，所以它不能接收空格。 string.h头文件 strlen(str)得到字符数组中第一个\0前的字符">
+<meta property="og:description" content="概念有向无环图（DAG）是指一个有向图的任意顶点都无法通过一些有向边回到自身。拓扑排序是将有向无环图G的所有顶点排成一个线性序列，使得对图G中的任意两个顶点u、v，如果存在边u-&amp;gt;v，那么在序列中u一定在v前面。这个序列又被称为拓扑序列。 拓扑序列求法思路：  定义一个队列Q，并把所有入度为0的结点加入队列。 取队首结点，输出。然后删去所有从它出发的边，并令这些边到达的顶点的入度减1，如果某">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-23T11:44:34.298Z">
+<meta property="og:updated_time" content="2019-05-24T11:04:48.590Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="字符串处理">
-<meta name="twitter:description" content="字符数组的输入输出 scanf和printf getchar和putchar用来输入和输出单个字符 gets:用来输入一行字符串，识别\n作为输入结束，并将其存放于一维数组中puts:用来输出一行字符串，并紧跟一个换行符。  gets可以接收空格，scanf遇到空格、回车和Tab键都会认为输入结束，所以它不能接收空格。 string.h头文件 strlen(str)得到字符数组中第一个\0前的字符">
+<meta name="twitter:title" content="拓扑排序">
+<meta name="twitter:description" content="概念有向无环图（DAG）是指一个有向图的任意顶点都无法通过一些有向边回到自身。拓扑排序是将有向无环图G的所有顶点排成一个线性序列，使得对图G中的任意两个顶点u、v，如果存在边u-&amp;gt;v，那么在序列中u一定在v前面。这个序列又被称为拓扑序列。 拓扑序列求法思路：  定义一个队列Q，并把所有入度为0的结点加入队列。 取队首结点，输出。然后删去所有从它出发的边，并令这些边到达的顶点的入度减1，如果某">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/29/字符串处理/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/05/24/拓扑排序/"/>
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>字符串处理 | Zay's Blog</title>
+  <title>拓扑排序 | Zay's Blog</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/字符串处理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/24/拓扑排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zay Alan">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">字符串处理
+          <h1 class="post-title" itemprop="name headline">拓扑排序
               
             
           </h1>
@@ -328,24 +328,12 @@
                 
               
 
-              <time title="创建时间：2019-03-29 17:54:56" itemprop="dateCreated datePublished" datetime="2019-03-29T17:54:56+08:00">2019-03-29</time>
+              <time title="创建时间：2019-05-24 18:24:27 / 修改时间：19:04:48" itemprop="dateCreated datePublished" datetime="2019-05-24T18:24:27+08:00">2019-05-24</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-23 19:44:34" itemprop="dateModified" datetime="2019-04-23T19:44:34+08:00">2019-04-23</time>
               
             
           </span>
@@ -378,24 +366,15 @@
       
 
       
-        <h1 id="字符数组的输入输出"><a href="#字符数组的输入输出" class="headerlink" title="字符数组的输入输出"></a>字符数组的输入输出</h1><ol>
-<li>scanf和printf</li>
-<li>getchar和putchar用来输入和输出单个字符</li>
-<li>gets:用来输入一行字符串，识别<code>\n</code>作为输入结束，并将其存放于一维数组中<br>puts:用来输出一行字符串，并紧跟一个换行符。</li>
+        <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p><strong>有向无环图（DAG）</strong>是指一个有向图的任意顶点都无法通过一些有向边回到自身。<br><strong>拓扑排序</strong>是将有向无环图G的所有顶点排成一个线性序列，使得对图G中的任意两个顶点u、v，如果存在边u-&gt;v，那么在序列中u一定在v前面。这个序列又被称为拓扑序列。</p>
+<h1 id="拓扑序列求法"><a href="#拓扑序列求法" class="headerlink" title="拓扑序列求法"></a>拓扑序列求法</h1><p>思路：</p>
+<ol>
+<li>定义一个队列Q，并把所有入度为0的结点加入队列。</li>
+<li>取队首结点，输出。然后删去所有从它出发的边，并令这些边到达的顶点的入度减1，如果某个顶点的入度减为0，则将其加入队列。</li>
+<li>反复进行2，直到队列为空。如果队列为空时入过队的结点数目恰好为N，说明拓扑排序成功，图G为有向无环图，否则拓扑排序失败，图G中有环。</li>
 </ol>
-<p><strong>gets可以接收空格，scanf遇到空格、回车和Tab键都会认为输入结束，所以它不能接收空格。</strong></p>
-<h1 id="string-h头文件"><a href="#string-h头文件" class="headerlink" title="string.h头文件"></a>string.h头文件</h1><ol>
-<li>strlen(str)<br>得到字符数组中第一个<code>\0</code>前的字符的个数</li>
-<li>strcmp(str1，str2)<br>返回两个字符串大小的比较结果，比较原则是字典序<br>1) str1 &lt; str2，则返回一个负整数<br>2) str1 = str2，则返回一个0<br>3) str1 &gt; str2，则返回一个正整数</li>
-<li>strcpy(str1, str2)<br>把str2的字符串复制给str1</li>
-</ol>
-<h1 id="STL的string"><a href="#STL的string" class="headerlink" title="STL的string"></a>STL的string</h1><ol>
-<li>string中内容的访问<br>1) 通过下标访问 str[0]<br>2) 通过迭代器访问 <code>string::iterator it = str.begin();*it;</code></li>
-<li>常用函数<br>1) +=<br>2) 比较运算符<br>3) length()/size()<br>4) insert(pos, string)<br>   insert(it, it2, it3): 将串[it2,it3)插在it的位置上，三个参数均为迭代器<br>5) erase(it): it为迭代器<br>   erase(first_it, last_it)：删除[first,last)，参数为迭代器<br>6) clear()<br>7) substr(pos, len)：返回从pos号位开始，长度为len的子串<br>8) find(str2)：返回str2在str中第一次出现的位置，如果不是子串，则返回string::npos<br>   find(str2, pos)：从str的pos号位开始匹配str2，返回值同上<br>9) replace(pos, len, str2)：把str从pos号位开始、长度为len的子串替换为str2<br>   replace(it1, it2, str2)：把[it1,it2)范围的子串替换为str2</li>
-</ol>
-<h1 id="algorithm下的有关函数"><a href="#algorithm下的有关函数" class="headerlink" title="algorithm下的有关函数"></a>algorithm下的有关函数</h1><ol>
-<li>reverse(it1, it2)<br>可以将数组指针在[it1,it2)之间的元素<br>或容器的迭代器在[it1,it2)范围内的元素进行反转<br><code>str.reverse(str.begin(),str.end());</code></li>
-</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[maxn];</span><br><span class="line"><span class="keyword">int</span> n,inDegree[maxn]; <span class="comment">//顶点数，入度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">topologicalSort</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num=<span class="number">0</span>;  <span class="comment">//记录加入拓扑序列的顶点数</span></span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(inDegree[i]==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            q.push(i)；</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G[u].size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> v = G[u][i];</span><br><span class="line">            inDegree[v]--;</span><br><span class="line">            <span class="keyword">if</span>(inDegree[v]==<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                q.push(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        G[u].clear();  <span class="comment">//选择性写</span></span><br><span class="line">        num++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(num==n) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ps:如果要求有多个入度为0的顶点，选择编号最小的顶点，则把queue改成priority_queue，保持队首是最小元素即可（也可用set）。</p>
 
       
     </div>
@@ -416,7 +395,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C-基础知识/" rel="tag"><i class="fa fa-tag"></i> C++基础知识</a>
+            <a href="/tags/常用算法/" rel="tag"><i class="fa fa-tag"></i> 常用算法</a>
           
         </div>
       
@@ -429,8 +408,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/28/入门模拟总结part2/" rel="next" title="入门模拟总结part2">
-                <i class="fa fa-chevron-left"></i> 入门模拟总结part2
+              <a href="/2019/05/22/最小生成树/" rel="next" title="最小生成树">
+                <i class="fa fa-chevron-left"></i> 最小生成树
               </a>
             
           </div>
@@ -439,8 +418,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/30/算法初步part1/" rel="prev" title="算法初步part1">
-                算法初步part1 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/24/关键路径/" rel="prev" title="关键路径">
+                关键路径 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -576,7 +555,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符数组的输入输出"><span class="nav-number">1.</span> <span class="nav-text">字符数组的输入输出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#string-h头文件"><span class="nav-number">2.</span> <span class="nav-text">string.h头文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#STL的string"><span class="nav-number">3.</span> <span class="nav-text">STL的string</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#algorithm下的有关函数"><span class="nav-number">4.</span> <span class="nav-text">algorithm下的有关函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#拓扑序列求法"><span class="nav-number">2.</span> <span class="nav-text">拓扑序列求法</span></a></li></ol></div>
             
 
           </div>
