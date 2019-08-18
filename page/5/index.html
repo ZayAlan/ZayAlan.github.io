@@ -102,25 +102,23 @@
 
 
 
-  <meta name="description" content="用途priority_queue的本质是堆，于是可作为堆来用以解决一些贪心问题，Dijkstra算法优化等。 针对结构体的第一种方式——重载操作符12345678910111213141516171819#include&amp;lt;queue&amp;gt;using namespace std;struct pat&amp;#123;    int num;    int score;    friend bool">
-<meta name="keywords" content="C++基础知识">
-<meta property="og:type" content="article">
-<meta property="og:title" content="priority_queue的简单应用">
-<meta property="og:url" content="http://yoursite.com/2019/03/25/priority-queue的简单应用/index.html">
+  <meta name="description" content="a singler who loves fucking code">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zay&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/page/5/index.html">
 <meta property="og:site_name" content="Zay&#39;s Blog">
-<meta property="og:description" content="用途priority_queue的本质是堆，于是可作为堆来用以解决一些贪心问题，Dijkstra算法优化等。 针对结构体的第一种方式——重载操作符12345678910111213141516171819#include&amp;lt;queue&amp;gt;using namespace std;struct pat&amp;#123;    int num;    int score;    friend bool">
+<meta property="og:description" content="a singler who loves fucking code">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-05T07:52:46.490Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="priority_queue的简单应用">
-<meta name="twitter:description" content="用途priority_queue的本质是堆，于是可作为堆来用以解决一些贪心问题，Dijkstra算法优化等。 针对结构体的第一种方式——重载操作符12345678910111213141516171819#include&amp;lt;queue&amp;gt;using namespace std;struct pat&amp;#123;    int num;    int score;    friend bool">
+<meta name="twitter:title" content="Zay&#39;s Blog">
+<meta name="twitter:description" content="a singler who loves fucking code">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/25/priority-queue的简单应用/"/>
+  <link rel="canonical" href="http://yoursite.com/page/5/"/>
 
 
 
@@ -130,7 +128,7 @@
   };
 </script>
 
-  <title>priority_queue的简单应用 | Zay's Blog</title>
+  <title>Zay's Blog</title>
   
 
 
@@ -177,7 +175,8 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-right 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -269,9 +268,9 @@
           
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -303,7 +302,11 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">priority_queue的简单应用
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/25/priority-queue的简单应用/" itemprop="url">
+                  priority_queue的简单应用
+                </a>
               
             
           </h1>
@@ -378,12 +381,16 @@
       
 
       
-        <h1 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h1><p>priority_queue的本质是堆，于是可作为堆来用以解决一些贪心问题，Dijkstra算法优化等。</p>
+        
+          
+            <h1 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h1><p>priority_queue的本质是堆，于是可作为堆来用以解决一些贪心问题，Dijkstra算法优化等。</p>
 <h1 id="针对结构体的第一种方式——重载操作符"><a href="#针对结构体的第一种方式——重载操作符" class="headerlink" title="针对结构体的第一种方式——重载操作符"></a>针对结构体的第一种方式——重载操作符</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pat</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">    <span class="keyword">int</span> score;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (pat p1,pat p2)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//注意，与cmp相反，此时产生的队列是得分高的优先级高</span></span><br><span class="line">        <span class="keyword">return</span> p1.score &lt; p2.score;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    priority_queue&lt;pat&gt; q;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="针对结构体的第二种方式——cmp"><a href="#针对结构体的第二种方式——cmp" class="headerlink" title="针对结构体的第二种方式——cmp"></a>针对结构体的第二种方式——cmp</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pat</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">    <span class="keyword">int</span> score;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cmp</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">operator</span> <span class="params">()</span> <span class="params">(pat p1, pat p2)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> p1.score&lt;p2.score;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    priority_queue&lt;pat, <span class="built_in">vector</span>&lt;pat&gt;, cmp&gt; q;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>相较而言，第二种方式实现较为复杂。</p>
 <h1 id="priority-queue的其他常用操作"><a href="#priority-queue的其他常用操作" class="headerlink" title="priority_queue的其他常用操作"></a>priority_queue的其他常用操作</h1><p><code>push()</code><br><code>top() //使用前注意判断是否为空</code><br><code>pop()</code><br><code>empty()</code><br><code>size()</code><br>两种自带优先级设置<br><code>priority_queue&lt;int, vector&lt;int&gt;, less&lt;int&gt; &gt; q //数字大的优先级高</code><br><code>priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt; &gt; q //数字小的优先级高</code></p>
 
+          
+        
       
     </div>
 
@@ -401,36 +408,14 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/C-基础知识/" rel="tag"><i class="fa fa-tag"></i> C++基础知识</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/25/日期处理和进制转换问题/" rel="prev" title="日期处理和进制转换问题">
-                日期处理和进制转换问题 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -440,19 +425,18 @@
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+  </nav>
+
 
 
           </div>
           
-
-  
-
-
 
         </div>
         
@@ -473,17 +457,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -559,22 +534,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用途"><span class="nav-number">1.</span> <span class="nav-text">用途</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#针对结构体的第一种方式——重载操作符"><span class="nav-number">2.</span> <span class="nav-text">针对结构体的第一种方式——重载操作符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#针对结构体的第二种方式——cmp"><span class="nav-number">3.</span> <span class="nav-text">针对结构体的第二种方式——cmp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#priority-queue的其他常用操作"><span class="nav-number">4.</span> <span class="nav-text">priority_queue的其他常用操作</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -710,10 +669,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
-
-
 
   
 
