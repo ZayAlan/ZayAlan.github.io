@@ -285,6 +285,169 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/map的应用总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zay Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/05/13/5af7c36518aa2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zay's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/01/map的应用总结/" itemprop="url">
+                  map的应用总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-01 18:44:46" itemprop="dateCreated datePublished" datetime="2019-04-01T18:44:46+08:00">2019-04-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-05 16:43:46" itemprop="dateModified" datetime="2019-04-05T16:43:46+08:00">2019-04-05</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>map会以键从小到大的顺序自动排序（同set一样内部用红黑树实现的）</strong><br>可用来处理hashTable数组处理不了的情况。</p>
+<h1 id="map的定义及访问"><a href="#map的定义及访问" class="headerlink" title="map的定义及访问"></a>map的定义及访问</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; mp1;</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;, <span class="keyword">int</span>&gt; mp2;</span><br><span class="line"></span><br><span class="line"><span class="comment">//下标访问</span></span><br><span class="line"><span class="keyword">int</span> a = mp1[<span class="string">"test"</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//迭代器访问</span></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;::iterator it=mp.begin(); it!=mp.end(); it++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c %d"</span>, it-&gt;first , it-&gt;second);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>map会以键从小到大的顺序自动排序。</p>
+<h1 id="map的常用函数"><a href="#map的常用函数" class="headerlink" title="map的常用函数"></a>map的常用函数</h1><ol>
+<li><p>find(key)，返回键为key的映射的迭代器。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> iter = m.find(key);</span><br><span class="line"> <span class="keyword">if</span>(iter!=m.end())</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">return</span> iter-&gt;second;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> null;</span><br></pre></td></tr></table></figure>
+<p>find()不成功则为m.end()</p>
+</li>
+<li>erase()<br>1) mp.erase(it)，it为需要删除的元素的迭代器。<br>2) mp.erase(key), key为欲删除的映射的键。<br>3) mp.erase(first, last), first和last为需要删除的区间的起始迭代器和末尾迭代器的下一个地址。</li>
+<li>size(), 获得map中映射的对数。</li>
+<li>clear(), 用来清空map中的所有元素。</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/30/算法初步part1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1285,7 +1448,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1334,7 +1497,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

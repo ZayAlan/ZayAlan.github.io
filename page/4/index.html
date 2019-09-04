@@ -285,6 +285,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/20/二叉树的总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zay Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/05/13/5af7c36518aa2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zay's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/20/二叉树的总结/" itemprop="url">
+                  二叉树的总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-20 18:45:56" itemprop="dateCreated datePublished" datetime="2019-04-20T18:45:56+08:00">2019-04-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-25 18:27:40" itemprop="dateModified" datetime="2019-04-25T18:27:40+08:00">2019-04-25</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="二叉树的存储结构和基本操作"><a href="#二叉树的存储结构和基本操作" class="headerlink" title="二叉树的存储结构和基本操作"></a>二叉树的存储结构和基本操作</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    node* lchild;</span><br><span class="line">    node* rchild;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//新建结点</span></span><br><span class="line"><span class="function">node* <span class="title">newNode</span><span class="params">(<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    node* Node = <span class="keyword">new</span> node;</span><br><span class="line">    Node-&gt;data = v;</span><br><span class="line">    Node-&gt;lchild=Node-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> Node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查找并修改</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">search</span><span class="params">(node* root, <span class="keyword">int</span> x, <span class="keyword">int</span> newdata)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(root-&gt;data==x)</span><br><span class="line">    &#123;</span><br><span class="line">        root-&gt;data = newdata;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    search(root-&gt;lchild,x,newdata);</span><br><span class="line">    search(root-&gt;rchild,x,newdata);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//结点的插入, 在根节点为root的树中插入一个数据域为x的结点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(node* &amp;root, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        root=newNode(x);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(根据要求，x应该插在左子树)</span><br><span class="line">    &#123;</span><br><span class="line">        insert(root-&gt;lchild,x);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        insert(root-&gt;rchild,x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//二叉树的创建</span></span><br><span class="line"><span class="function">node* <span class="title">Create</span><span class="params">(<span class="keyword">int</span> data[],<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    node* root=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        insert(root,data[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong><br>在insert()函数中，根节点指针root使用了引用&amp;，原因是如果不使用引用，root = newNode(x)这个语句对root的修改就无法作用到原变量上去。而前面的search函数不需要加引用，原因是其修改的是指针root指向的内容，而不是root本身，而对指针指向的结点内容的修改是不需要加引用的。<br><strong>如何判断是否要加引用？</strong><br>如果函数中需要新建结点，即对二叉树的结构作出修改，就需要加引用；<br>如果只是修改当前已有结点的内容，或仅仅是遍历树，就不用加引用。</p>
+<h1 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h1><h2 id="先序遍历"><a href="#先序遍历" class="headerlink" title="先序遍历"></a>先序遍历</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preorder</span><span class="params">(node* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,root-&gt;data);</span><br><span class="line">    preorder(root-&gt;lchild);</span><br><span class="line">    preorder(root-&gt;rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inorder</span><span class="params">(node* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    inorder(root-&gt;lchild);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,root-&gt;data);</span><br><span class="line">    inorder(root-&gt;rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">postorder</span><span class="params">(node* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    postorder(root-&gt;lchild);</span><br><span class="line">    postorder(root-&gt;rchild);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,root-&gt;data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>无论是先序遍历序列还是后序遍历序列，都必须知道中序遍历序列才能唯一地确定一棵树</strong></p>
+<h2 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LayerOrder</span><span class="params">(node* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;node*&gt; q;</span><br><span class="line">    q.push(root);</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        node* now = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,now-&gt;data);</span><br><span class="line">        <span class="keyword">if</span>(now-&gt;lchild != <span class="literal">NULL</span>) q.push(now-&gt;lchild);</span><br><span class="line">        <span class="keyword">if</span>(now-&gt;rchild != <span class="literal">NULL</span>) q.push(now-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>队列中元素是node*型而不是node型，这样可以通过访问地址去修改原元素。</strong><br>如果要求计算每个结点的层次，可在node结构体中增加layer属性。<br>在层次遍历时，root设为1，而后在左右孩子判断非空中，设置左右孩子的层号为当前层号+1.</p>
+<h2 id="给定序列，重建二叉树"><a href="#给定序列，重建二叉树" class="headerlink" title="给定序列，重建二叉树"></a>给定序列，重建二叉树</h2><p>给定先序遍历序列和中序遍历序列，重建二叉树.<br>思路：</p>
+<ol>
+<li>根据先序序列找到根结点，然后在中序序列中确定根结点的位置k。</li>
+<li>于是，左子树的结点个数为k-1，因此，左子树的先序序列区间是[2,k]，中序序列区间是[1,k-1]</li>
+<li>于是，右子树的先序序列区间是[k+1,n]，中序序列区间是[k+1,n]</li>
+<li>往左子树和右子树进行递归构建二叉树。<br>递归过程：</li>
+<li>如果递归过程中当前先序序列的区间为[preL,preR]，中序序列的区间为[inL,inR]。</li>
+<li>那么左子树的结点个数为numLeft = k-inL，左子树的先序序列区间是[preL+1,preL+numLeft]，中序序列区间是[inL,k-1]</li>
+<li>右子树的先序序列区间是[preL+numLeft+1,preR]，中序序列区间是[k+1,inR]<br>递归出口：先序序列的长度小于等于0。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先序序列存放于数组pre[]，中序序列存放于数组in[]</span></span><br><span class="line"><span class="function">node* <span class="title">create</span><span class="params">(<span class="keyword">int</span> preL, <span class="keyword">int</span> preR, <span class="keyword">int</span> inL, <span class="keyword">int</span> inR)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(preL&gt;preR)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    node* root = <span class="keyword">new</span> node;</span><br><span class="line">    root-&gt;data = pre[preL];</span><br><span class="line">    <span class="keyword">int</span> k;</span><br><span class="line">    <span class="keyword">for</span>(k=inL; k&lt;=inR; k++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(in[k] == pre[preL])&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> numLeft=k-inL;</span><br><span class="line"></span><br><span class="line">    root-&gt;lchild=create(preL+<span class="number">1</span>, preL+numLeft, inL, k<span class="number">-1</span>);</span><br><span class="line">    root-&gt;rchild=create(preL+numLeft+<span class="number">1</span>, preR, k+<span class="number">1</span>, inR);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>若给出后序序列和中序序列，只需在根结点的选择上改为post[postR],且左右子树选择的区间进行调整就行。</p>
+<h1 id="二叉树的静态实现"><a href="#二叉树的静态实现" class="headerlink" title="二叉树的静态实现"></a>二叉树的静态实现</h1><p><strong>tips：给定一个静态二叉树的数组，判断哪个是根结点的方法是——找那个不是任何结点的子结点的结点，即为根结点</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="keyword">int</span> lchild;</span><br><span class="line">    <span class="keyword">int</span> rchild;</span><br><span class="line">&#125;Node[maxn];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> index=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">newNode</span><span class="params">(<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Node[index].data=v;</span><br><span class="line">    Node[index].lchild=Node[index].rchild=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> index++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span> root,<span class="keyword">int</span> x,<span class="keyword">int</span> newdata)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root=<span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(Node[root].data == x)&#123;</span><br><span class="line">        Node[root].data = newdata;</span><br><span class="line">    &#125;</span><br><span class="line">    search(Node[root].lchild,x,newdata);</span><br><span class="line">    search(Node[root].rchild,x,newdata);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> &amp;root,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        root = newNode(x);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(由二叉树的性质x应该插在左子树)</span><br><span class="line">    &#123;</span><br><span class="line">        insert(Node[root].lchild,x);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        insert(Node[root].rchild,x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Create</span><span class="params">(<span class="keyword">int</span> data[],<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> root = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        insert(root,data[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//先序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preorder</span><span class="params">(<span class="keyword">int</span> root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Node[root].data);</span><br><span class="line">    preorder(Node[root].lchild);</span><br><span class="line">    preorder(Node[root].rchild);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//中序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inorder</span><span class="params">(<span class="keyword">int</span> root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    inorder(Node[root].lchild);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Node[root].data);</span><br><span class="line">    inorder(Node[root].rchild);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//后序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">postorder</span><span class="params">(<span class="keyword">int</span> root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    postorder(Node[root].lchild);</span><br><span class="line">    postorder(Node[root].rchild);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Node[root].data);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//层序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LayerOrder</span><span class="params">(<span class="keyword">int</span> root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    q.push(root);</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> now = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Node[now].data);</span><br><span class="line">        <span class="keyword">if</span>(Node[now].lchild != <span class="number">-1</span>) q.push(Node[now].lchild);</span><br><span class="line">        <span class="keyword">if</span>(Node[now].rchild != <span class="number">-1</span>) q.push(Node[now].rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/16/DFS和BFS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1642,169 +1814,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/map的应用总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zay Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i.loli.net/2018/05/13/5af7c36518aa2.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zay's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/01/map的应用总结/" itemprop="url">
-                  map的应用总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-01 18:44:46" itemprop="dateCreated datePublished" datetime="2019-04-01T18:44:46+08:00">2019-04-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-05 16:43:46" itemprop="dateModified" datetime="2019-04-05T16:43:46+08:00">2019-04-05</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>map会以键从小到大的顺序自动排序（同set一样内部用红黑树实现的）</strong><br>可用来处理hashTable数组处理不了的情况。</p>
-<h1 id="map的定义及访问"><a href="#map的定义及访问" class="headerlink" title="map的定义及访问"></a>map的定义及访问</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; mp1;</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;, <span class="keyword">int</span>&gt; mp2;</span><br><span class="line"></span><br><span class="line"><span class="comment">//下标访问</span></span><br><span class="line"><span class="keyword">int</span> a = mp1[<span class="string">"test"</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//迭代器访问</span></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;::iterator it=mp.begin(); it!=mp.end(); it++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c %d"</span>, it-&gt;first , it-&gt;second);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>map会以键从小到大的顺序自动排序。</p>
-<h1 id="map的常用函数"><a href="#map的常用函数" class="headerlink" title="map的常用函数"></a>map的常用函数</h1><ol>
-<li><p>find(key)，返回键为key的映射的迭代器。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> iter = m.find(key);</span><br><span class="line"> <span class="keyword">if</span>(iter!=m.end())</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">return</span> iter-&gt;second;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> null;</span><br></pre></td></tr></table></figure>
-<p>find()不成功则为m.end()</p>
-</li>
-<li>erase()<br>1) mp.erase(it)，it为需要删除的元素的迭代器。<br>2) mp.erase(key), key为欲删除的映射的键。<br>3) mp.erase(first, last), first和last为需要删除的区间的起始迭代器和末尾迭代器的下一个地址。</li>
-<li>size(), 获得map中映射的对数。</li>
-<li>clear(), 用来清空map中的所有元素。</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1856,7 +1865,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1905,7 +1914,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
