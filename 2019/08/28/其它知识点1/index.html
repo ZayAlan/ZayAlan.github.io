@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Zay&#39;s Blog">
 <meta property="og:description" content="unordered_map unordered_map存储不容易超时。#include &amp;lt;unordered_map&amp;gt; 排序传参建议⽤引⽤传参，这样更快，虽然有时候不⽤引⽤传参也能通过，但还是尽量⽤，养成好习惯～ 123bool cmp(const node &amp;amp;a, const node &amp;amp;b) &amp;#123;    return a.value != b.value ?">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-04T01:52:08.362Z">
+<meta property="og:updated_time" content="2019-09-05T06:37:46.002Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="其它知识点1">
 <meta name="twitter:description" content="unordered_map unordered_map存储不容易超时。#include &amp;lt;unordered_map&amp;gt; 排序传参建议⽤引⽤传参，这样更快，虽然有时候不⽤引⽤传参也能通过，但还是尽量⽤，养成好习惯～ 123bool cmp(const node &amp;amp;a, const node &amp;amp;b) &amp;#123;    return a.value != b.value ?">
@@ -345,7 +345,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-04 09:52:08" itemprop="dateModified" datetime="2019-09-04T09:52:08+08:00">2019-09-04</time>
+                <time title="修改时间：2019-09-05 14:37:46" itemprop="dateModified" datetime="2019-09-05T14:37:46+08:00">2019-09-05</time>
               
             
           </span>
@@ -398,8 +398,15 @@
 </li>
 <li><p>螺旋矩阵的遍历：</p>
 <p>按口字形遍历，M*N型（M&gt;=N）矩阵共有M/2+M%2个口字形（层）。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; level; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt;= n - <span class="number">1</span> - i &amp;&amp; t &lt;= N - <span class="number">1</span>; j++)</span><br><span class="line">        b[i][j] = a[t++];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= m - <span class="number">2</span> - i &amp;&amp; t &lt;= N - <span class="number">1</span>; j++)</span><br><span class="line">        b[j][n - <span class="number">1</span> - i] = a[t++];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = n - i - <span class="number">1</span>; j &gt;= i &amp;&amp; t &lt;= N - <span class="number">1</span>; j--)</span><br><span class="line">        b[m - <span class="number">1</span> - i][j] = a[t++];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = m - <span class="number">2</span> - i; j &gt;= i + <span class="number">1</span> &amp;&amp; t &lt;= N - <span class="number">1</span>; j--)</span><br><span class="line">        b[j][i] = a[t++];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> t=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> level = m/<span class="number">2</span>+m%<span class="number">2</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; level; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt;= n - <span class="number">1</span> - i &amp;&amp; t &lt;= N - <span class="number">1</span>; j++)</span><br><span class="line">        b[i][j] = a[t++];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= m - <span class="number">2</span> - i &amp;&amp; t &lt;= N - <span class="number">1</span>; j++)</span><br><span class="line">        b[j][n - <span class="number">1</span> - i] = a[t++];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = n - i - <span class="number">1</span>; j &gt;= i &amp;&amp; t &lt;= N - <span class="number">1</span>; j--)</span><br><span class="line">        b[m - <span class="number">1</span> - i][j] = a[t++];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = m - <span class="number">2</span> - i; j &gt;= i + <span class="number">1</span> &amp;&amp; t &lt;= N - <span class="number">1</span>; j--)</span><br><span class="line">        b[j][i] = a[t++];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
+<li><p><strong>cmp函数的强化使用！！！</strong></p>
+<p>不是按照字典序排列就可以的，必须保证两个字符串构成的数字是最⼩的才⾏，所以cmp函数写成return a + b &lt; b + a;的形式，保证它排列按照能够组成的最⼩数字的形式排列。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;a,<span class="keyword">const</span> <span class="built_in">string</span> &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b&lt;b+a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>strcmp(str1,str2)，若str1=str2，则返回零；若str1&lt;str2，则返回负数；若str1&gt;str2，则返回正数。</p>
+</li>
+<li><strong>注重先存储，后按条件取值push的思想！</strong></li>
 </ol>
 
       
@@ -524,7 +531,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -575,7 +582,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

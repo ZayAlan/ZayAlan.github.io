@@ -285,6 +285,173 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/算法初步part2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zay Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/05/13/5af7c36518aa2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zay's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/02/算法初步part2/" itemprop="url">
+                  算法初步part2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-02 20:04:48" itemprop="dateCreated datePublished" datetime="2019-04-02T20:04:48+08:00">2019-04-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-07 20:16:57" itemprop="dateModified" datetime="2019-04-07T20:16:57+08:00">2019-04-07</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="To-Fill-or-Not-to-Fill"><a href="#To-Fill-or-Not-to-Fill" class="headerlink" title="To Fill or Not to Fill"></a>To Fill or Not to Fill</h1><p>贪心算法的加油问题，策略如下：<br>从满油状态下能到达的所有加油站中选出下一个前往的加油站：</p>
+<ol>
+<li>优先前往更低油价的加油站</li>
+<li>在没有更低油价的加油站时，前往油价尽可能低的加油站</li>
+<li>没有加油站可以到达或到达终点时算法结束</li>
+</ol>
+<p>代码后续实现后更新。<br>个人实现遇到的问题，在油量的计算上欠缺考虑，导致后半部分花费的计算上遇到困难，答案的做法将终点设置为了数组的第n个位置，简化了计算，代码后续再次尝试后更新。</p>
+<h1 id="Insert-or-Merge"><a href="#Insert-or-Merge" class="headerlink" title="Insert or Merge"></a>Insert or Merge</h1><p>先进行插入排序，如果执行过程中发现与给定序列吻合，那么说明是插入排序，计算出下一步的序列后结束算法；<br>如果不是插入排序，那么一定是归并排序，模拟归并排序的过程，如果执行过程中发现与给定序列吻合，那么计算出下一步的序列后结束算法。<br>这样将问题转换为了只需要判断该序列是否是插入排序就行了。</p>
+<h1 id="Recover-the-Smallest-Number"><a href="#Recover-the-Smallest-Number" class="headerlink" title="Recover the Smallest Number"></a>Recover the Smallest Number</h1><p>贪心策略：</p>
+<ol>
+<li>先按字典序排列，然后从前到后进行第二步的处理。</li>
+<li>对数字串s1与s2，如果s1+s2&lt;s2+s1,那么把s1放在s2的前面，否则，把s2放在s1的前面。</li>
+</ol>
+<p>本题想明白了解题方法并利用string来做的话实现难度非常简单，下面代码当作熟悉string的使用：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="built_in">string</span> s1,<span class="built_in">string</span> s2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//string可以一句话实现贪心策略</span></span><br><span class="line">    <span class="keyword">return</span> s1+s2&lt;s2+s1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">string</span> numbers[<span class="number">10010</span>];</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;numbers[i];</span><br><span class="line">    &#125;</span><br><span class="line">    sort(numbers,numbers+n,cmp);</span><br><span class="line">    <span class="built_in">string</span> result;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        result+=numbers[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(result.size()!=<span class="number">0</span> &amp;&amp; result[<span class="number">0</span>] == <span class="string">'0'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        result.erase(result.begin());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(result.size()==<span class="number">0</span>)<span class="built_in">cout</span>&lt;&lt;<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;result;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Radix"><a href="#Radix" class="headerlink" title="Radix"></a>Radix</h1><p>题意为给出两个整数，并给出其中一个数的进制，要求判断另一个数在何种进制下能与其相等。<br>做法为将给出进制的那个数转换成十进制数，然后判断这个十进制数与另一个数的大小，得出另一个数的进制所在的区间。<br>对该区间进行二分查找，进行是否存在相等情况的判断。<br>需要注意的是，进制转换问题，由于有“a”“b”等，所以选择使用字符数组对每个数据进行存储较好；<br>直接暴力枚举遍历会导致超时，变量尽量使用longlong类型，同时存在溢出的可能，需要进行溢出判断。<br>题目看着不难，做起来好麻烦啊。。。。。。暂时先放着吧。。。。。。</p>
+<h1 id="Shopping-in-Mars"><a href="#Shopping-in-Mars" class="headerlink" title="Shopping in Mars"></a>Shopping in Mars</h1><p>实质为连续子序列和的问题，可以利用upper_bound来进行处理。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/map的应用总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1448,7 +1615,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1499,7 +1666,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
