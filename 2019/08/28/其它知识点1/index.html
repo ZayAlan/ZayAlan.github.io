@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Zay&#39;s Blog">
 <meta property="og:description" content="unordered_map unordered_map存储不容易超时。#include &amp;lt;unordered_map&amp;gt; 排序传参建议⽤引⽤传参，这样更快，虽然有时候不⽤引⽤传参也能通过，但还是尽量⽤，养成好习惯～ 123bool cmp(const node &amp;amp;a, const node &amp;amp;b) &amp;#123;    return a.value != b.value ?">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-06T14:10:44.168Z">
+<meta property="og:updated_time" content="2019-09-07T00:44:07.523Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="其它知识点1">
 <meta name="twitter:description" content="unordered_map unordered_map存储不容易超时。#include &amp;lt;unordered_map&amp;gt; 排序传参建议⽤引⽤传参，这样更快，虽然有时候不⽤引⽤传参也能通过，但还是尽量⽤，养成好习惯～ 123bool cmp(const node &amp;amp;a, const node &amp;amp;b) &amp;#123;    return a.value != b.value ?">
@@ -345,7 +345,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-06 22:10:44" itemprop="dateModified" datetime="2019-09-06T22:10:44+08:00">2019-09-06</time>
+                <time title="修改时间：2019-09-07 08:44:07" itemprop="dateModified" datetime="2019-09-07T08:44:07+08:00">2019-09-07</time>
               
             
           </span>
@@ -394,7 +394,7 @@
 <li>其它数据转string用<code>string a = to_string(1);</code></li>
 <li><p>sscanf() – 从⼀个字符串中读进与指定格式相符的数据</p>
 <p>sprintf() – 字符串格式化命令，主要功能是把格式化的数据写⼊某个字符串中</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">char</span> str[<span class="number">20</span>]=<span class="string">"123"</span>;</span><br><span class="line"><span class="built_in">sscanf</span>(str,<span class="string">"%d"</span>,&amp;n);     <span class="comment">//把str中的内容以"%d"的格式输出到n中</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n=<span class="number">123</span>;</span><br><span class="line"><span class="keyword">char</span> str[<span class="number">20</span>];</span><br><span class="line">ssprintf(str,<span class="string">"%d"</span>,n);    <span class="comment">//把n中的内容以"%d"的格式输出到str中</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">char</span> str[<span class="number">20</span>]=<span class="string">"123"</span>;</span><br><span class="line"><span class="built_in">sscanf</span>(str,<span class="string">"%d"</span>,&amp;n);     <span class="comment">//把str中的内容以"%d"的格式输出到n中</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n=<span class="number">123</span>;</span><br><span class="line"><span class="keyword">char</span> str[<span class="number">20</span>];</span><br><span class="line"><span class="built_in">sprintf</span>(str,<span class="string">"%d"</span>,n);    <span class="comment">//把n中的内容以"%d"的格式输出到str中</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>螺旋矩阵的遍历：</p>
 <p>按口字形遍历，M*N型（M&gt;=N）矩阵共有M/2+M%2个口字形（层）。</p>
