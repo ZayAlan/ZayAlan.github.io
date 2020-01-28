@@ -21,12 +21,12 @@
   var CONFIG = {
     hostname: new URL('http://yoursite.com').hostname,
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '7.7.0',
     exturl: false,
     sidebar: {"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
@@ -47,7 +47,7 @@
 </script>
 
   <meta name="description" content="图的存储邻接矩阵用二维数组，适用于顶点数目比较小的情况。 邻接表（vector版）123456struct Node&amp;#123;    int v,w;    Node(int _v,int _w): v(_v),w(_w) &amp;#123;&amp;#125;&amp;#125;;vector&amp;lt;Node&amp;gt; Adj[maxn];Adj[1].push_back(Node(3,4)); 图的遍历由于关于计算">
-<meta name="keywords" content="刷题总结,常用算法">
+<meta name="keywords" content="常用算法,刷题总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图的遍历">
 <meta property="og:url" content="http://yoursite.com/2019/05/04/图的遍历/index.html">
@@ -182,10 +182,6 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
 
 
     <main class="main">
@@ -275,8 +271,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/刷题总结/" rel="tag"># 刷题总结</a>
               <a href="/tags/常用算法/" rel="tag"># 常用算法</a>
+              <a href="/tags/刷题总结/" rel="tag"># 刷题总结</a>
           </div>
 
         
@@ -383,6 +379,10 @@
 
 
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>

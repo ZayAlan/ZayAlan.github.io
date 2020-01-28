@@ -21,12 +21,12 @@
   var CONFIG = {
     hostname: new URL('http://yoursite.com').hostname,
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '7.7.0',
     exturl: false,
     sidebar: {"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
@@ -47,7 +47,7 @@
 </script>
 
   <meta name="description" content="平衡二叉树定义AVL树仍然是一棵二叉查找树，只是增加了平衡的要求，即对AVL树的任意结点来说，其左子树和右子树的高度之差的绝对值不超过1，其中左子树和右子树的高度之差称为该结点的平衡因子。只要保证每个结点平衡因子的绝对值不超过1就行，于是在结点的结构中加入一个height变量，用来记录以当前结点为根结点的子树的高度。12345678910111213141516171819202122232425">
-<meta name="keywords" content="刷题总结,常用算法">
+<meta name="keywords" content="常用算法,刷题总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="平衡二叉树">
 <meta property="og:url" content="http://yoursite.com/2019/05/01/平衡二叉树/index.html">
@@ -182,10 +182,6 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
 
 
     <main class="main">
@@ -292,8 +288,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/刷题总结/" rel="tag"># 刷题总结</a>
               <a href="/tags/常用算法/" rel="tag"># 常用算法</a>
+              <a href="/tags/刷题总结/" rel="tag"># 刷题总结</a>
           </div>
 
         
@@ -400,6 +396,10 @@
 
 
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
