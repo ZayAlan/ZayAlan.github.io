@@ -48,20 +48,20 @@
   };
 </script>
 
-  <meta name="description" content="A1049.Counting Ones这题有意思，在选取测试数据上给自己提个醒，有时间多回顾一下。 Rational Sum本题要求实现多个分数的加法，并将结果以带分数的形式展示，没找到错在哪。。。先放上来以后再debug吧1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484">
-<meta name="keywords" content="刷题总结">
+  <meta name="description" content="将单个char转换为string类型  错误做法12char a = &amp;apos;a&amp;apos;;string t = to_string(a);   这样得到的t为a的ASCII码值。  正确做法12345678910111213//使用 string 的构造函数char a = &amp;apos;a&amp;apos;;string t(1,a);//声明string 后将char push_backstr">
+<meta name="keywords" content="C++基础知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数学问题">
-<meta property="og:url" content="http://yoursite.com/2019/04/10/数学问题/index.html">
+<meta property="og:title" content="string补充">
+<meta property="og:url" content="http://yoursite.com/2020/02/26/string补充/index.html">
 <meta property="og:site_name" content="Zay&#39;s Blog">
-<meta property="og:description" content="A1049.Counting Ones这题有意思，在选取测试数据上给自己提个醒，有时间多回顾一下。 Rational Sum本题要求实现多个分数的加法，并将结果以带分数的形式展示，没找到错在哪。。。先放上来以后再debug吧1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484">
+<meta property="og:description" content="将单个char转换为string类型  错误做法12char a = &amp;apos;a&amp;apos;;string t = to_string(a);   这样得到的t为a的ASCII码值。  正确做法12345678910111213//使用 string 的构造函数char a = &amp;apos;a&amp;apos;;string t(1,a);//声明string 后将char push_backstr">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-13T11:54:44.123Z">
+<meta property="og:updated_time" content="2020-02-26T09:11:07.131Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数学问题">
-<meta name="twitter:description" content="A1049.Counting Ones这题有意思，在选取测试数据上给自己提个醒，有时间多回顾一下。 Rational Sum本题要求实现多个分数的加法，并将结果以带分数的形式展示，没找到错在哪。。。先放上来以后再debug吧1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484">
+<meta name="twitter:title" content="string补充">
+<meta name="twitter:description" content="将单个char转换为string类型  错误做法12char a = &amp;apos;a&amp;apos;;string t = to_string(a);   这样得到的t为a的ASCII码值。  正确做法12345678910111213//使用 string 的构造函数char a = &amp;apos;a&amp;apos;;string t(1,a);//声明string 后将char push_backstr">
 
-<link rel="canonical" href="http://yoursite.com/2019/04/10/数学问题/">
+<link rel="canonical" href="http://yoursite.com/2020/02/26/string补充/">
 
 
 <script id="page-configurations">
@@ -73,7 +73,7 @@
   };
 </script>
 
-  <title>数学问题 | Zay's Blog</title>
+  <title>string补充 | Zay's Blog</title>
   
 
 
@@ -199,7 +199,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/10/数学问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/26/string补充/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar2.gif">
@@ -212,7 +212,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          数学问题
+          string补充
         </h1>
 
         <div class="post-meta">
@@ -221,16 +221,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-04-10 20:00:05" itemprop="dateCreated datePublished" datetime="2019-04-10T20:00:05+08:00">2019-04-10</time>
+              <time title="创建时间：2020-02-26 17:06:03 / 修改时间：17:11:07" itemprop="dateCreated datePublished" datetime="2020-02-26T17:06:03+08:00">2020-02-26</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-04-13 19:54:44" itemprop="dateModified" datetime="2019-04-13T19:54:44+08:00">2019-04-13</time>
-              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -250,9 +244,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="A1049-Counting-Ones"><a href="#A1049-Counting-Ones" class="headerlink" title="A1049.Counting Ones"></a>A1049.Counting Ones</h1><p>这题有意思，在选取测试数据上给自己提个醒，有时间多回顾一下。</p>
-<h1 id="Rational-Sum"><a href="#Rational-Sum" class="headerlink" title="Rational Sum"></a>Rational Sum</h1><p>本题要求实现多个分数的加法，并将结果以带分数的形式展示，没找到错在哪。。。先放上来以后再debug吧<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Num</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> d;</span><br><span class="line">&#125;num[<span class="number">110</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">gcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a, <span class="keyword">long</span> <span class="keyword">long</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> gcd(b, a%b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> lcmNum;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d/%d"</span>,&amp;num[i].n,&amp;num[i].d);</span><br><span class="line">    &#125;</span><br><span class="line">    Num result=num[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        result.n=result.n*num[i].d+num[i].n*result.d;</span><br><span class="line">        result.d=result.d*num[i].d;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> gcdNum=gcd(result.n,result.d);</span><br><span class="line">    result.n/=gcdNum;</span><br><span class="line">    result.d/=gcdNum;</span><br><span class="line">    <span class="keyword">int</span> more=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(result.n&gt;result.d)</span><br><span class="line">    &#123;</span><br><span class="line">        more=result.n/result.d;</span><br><span class="line">        result.n=result.n%result.d;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d/%d"</span>,more,result.n,result.d);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d/%d"</span>,result.n,result.d);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="Consecutive-Factors"><a href="#Consecutive-Factors" class="headerlink" title="Consecutive Factors"></a>Consecutive Factors</h1><p>策略：由于N不会被除自己以外的大于根号N的整数整除，因此只需要从2~根号N遍历连续整数的第一个，求此时N能被最多多少个连续整数的乘积整除。</p>
+        <p>将单个char转换为string类型</p>
+<ul>
+<li>错误做法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char a = &apos;a&apos;;</span><br><span class="line">string t = to_string(a);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这样得到的t为a的ASCII码值。</p>
+<ul>
+<li>正确做法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//使用 string 的构造函数</span><br><span class="line">char a = &apos;a&apos;;</span><br><span class="line">string t(1,a);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//声明string 后将char push_back</span><br><span class="line">string s1;</span><br><span class="line">s1.push_back(a);</span><br><span class="line"></span><br><span class="line">//使用stringstream</span><br><span class="line">stringstream ss;</span><br><span class="line">ss &lt;&lt; aa;</span><br><span class="line">string str2 = ss.str();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
     </div>
 
@@ -262,7 +263,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/刷题总结/" rel="tag"># 刷题总结</a>
+              <a href="/tags/C-基础知识/" rel="tag"># C++基础知识</a>
           </div>
 
         
@@ -271,13 +272,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/04/04/lower-bound和upper-bound/" rel="prev" title="lower_bound和upper_bound">
-      <i class="fa fa-chevron-left"></i> lower_bound和upper_bound
+    <a href="/2019/09/05/按类刷题系列总结7/" rel="prev" title="按类刷题系列总结7">
+      <i class="fa fa-chevron-left"></i> 按类刷题系列总结7
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2019/04/10/最大公约数和最小公倍数/" rel="next" title="最大公约数和最小公倍数">
-      最大公约数和最小公倍数 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -337,7 +335,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A1049-Counting-Ones"><span class="nav-number">1.</span> <span class="nav-text">A1049.Counting Ones</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Rational-Sum"><span class="nav-number">2.</span> <span class="nav-text">Rational Sum</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Consecutive-Factors"><span class="nav-number">3.</span> <span class="nav-text">Consecutive Factors</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
